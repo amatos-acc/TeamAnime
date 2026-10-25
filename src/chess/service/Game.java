@@ -127,10 +127,10 @@ public class Game {
                     + currentPlayer.getColor().displayName() + "'s turn.");
         }
 
-        // TODO(12): Reject a move onto a square occupied by one of the mover's OWN pieces.
-        //   Piece target = board.getPiece(to);
-        //   If target != null and target has the same color as mover, return a MoveResult.failure(...)
-        //   with a message such as "E1 is occupied by your own Pawn."
+        Piece target = board.getPiece(to);
+        if (target != null && target.getColor() == mover.getColor()) {
+            return MoveResult.failure(to + " is occupied by your own " + target.getName() + ".");
+        }
 
         // Polymorphic call: the actual subclass (Pawn, Rook, ...) decides what "valid" means.
         if (!mover.isValidPattern(to, board)) {
