@@ -98,14 +98,16 @@ public class InputParser {
      * @return a MOVE command, or INVALID with an explanation
      */
     private Command parseMove(String[] tokens) {
-        // TODO(15): Turn ["E2", "E4"] into Command.move(from, to).
-        //   1. If tokens.length != 2, return Command.invalid(...) explaining the expected format.
-        //      (Covers the "E2" test case - one token - and things like "E2 to E4".)
-        //   2. Inside a try block, call Position.fromAlgebraic on each token.
-        //   3. catch (IllegalArgumentException e) -> return Command.invalid(e.getMessage());
-        //      (Covers "Z9 E4".) Never let the exception escape: the UI must not crash.
-        //   4. return Command.move(from, to);
-        //   Look at parseMovesHint() above - it is the same idea with one square.
-        return Command.invalid("Move parsing is not implemented yet (TODO 15 in InputParser).");
+        // Turn ["E2", "E4"] into Command.move(from, to).
+        
+        if (tokens.length != 2) {
+            return Command.invalid("Usage: <FROM> <TO>, for example: E2 E4");
+        }
+        
+        try {
+            return Command.move(Position.fromAlgebraic(tokens[0]), Position.fromAlgebraic(tokens[1]));
+        } catch (IllegalArgumentException e) {
+            return Command.invalid(e.getMessage());
+        }
     }
 }
