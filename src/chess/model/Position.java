@@ -64,16 +64,36 @@ public final class Position {
      *                                  or names a square that is not on the board
      */
     public static Position fromAlgebraic(String text) {
-        // TODO(1): Implement algebraic -> array conversion. This is the inverse of toAlgebraic() below.
-        //   1. Reject null or anything that is not exactly 2 characters after trimming
-        //      (throw IllegalArgumentException with a helpful message like "Expected a square like E2").
-        //   2. Convert the first character to upper case and compute col = fileChar - 'A'.
-        //   3. Convert the second character to a digit and compute row = 8 - rankDigit.
-        //   4. If the file isn't A-H or the rank isn't 1-8, throw IllegalArgumentException
-        //      naming the bad square, e.g. "Z9 is not on the board (files A-H, ranks 1-8)".
-        //   5. return new Position(row, col);
-        //   Boundary cases to test: "A1", "H8", "a1", "I1", "A0", "A9", "E", "E22", "", null.
-        throw new IllegalArgumentException("Position.fromAlgebraic is not implemented yet (TODO 1).");
+        //  Reject null or anything that is not exactly 2 characters after trimming
+        //  (throw IllegalArgumentException with a helpful message like "Expected a square like E2").
+        
+        if (text == null) {
+            throw new IllegalArgumentException("Expected a square like E2 but got '" + text + "'");
+        } 
+        
+        String square = text.trim().toUpperCase();
+        
+        if (square.length() != 2) {
+            throw new IllegalArgumentException("Expected a square like E2 but got '" + text + "'");
+        }
+        
+        // Compute col = first character - 'A'.
+        int col = square.charAt(0) - 'A';
+        
+        // Convert the second character to a digit and compute row = 8 - rankDigit.
+        int row = 8 - (square.charAt(1) - '0');
+        
+        // If the file isn't A-H or the rank isn't 1-8, throw IllegalArgumentException
+        // naming the bad square, e.g. "Z9 is not on the board (files A-H, ranks 1-8)".
+        if (col > 7 || col < 0) {
+            throw new IllegalArgumentException(square + " is not on the board (files A-H, ranks 1-8)");
+        }
+        
+        if (row > 7 || row < 0) {
+            throw new IllegalArgumentException(square + " is not on the board (files A-H, ranks 1-8)");
+        }
+        
+        return new Position(row, col);
     }
 
     /**
