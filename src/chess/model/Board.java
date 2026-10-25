@@ -63,11 +63,19 @@ public class Board {
      * @param row   the array row of that color's back rank
      */
     private void placeBackRank(PieceColor color, int row) {
-        // TODO(2): Place the eight back-rank pieces on `row` using placePiece(...).
+        // Place the eight back-rank pieces on `row` using placePiece(...).
         //   Columns 0-7 should get: Rook, Knight, Bishop, Queen, King, Bishop, Knight, Rook.
         //   Example for column 0:  placePiece(new Rook(color, new Position(row, 0)));
         //   Tip: the queen goes on column 3 (file D) and the king on column 4 (file E) for BOTH colors.
         //   (The imports for every piece type are already at the top of this file.)
+        placePiece(new Rook(color, new Position(row, 0)));
+        placePiece(new Knight(color, new Position(row, 1)));
+        placePiece(new Bishop(color, new Position(row, 2)));
+        placePiece(new Queen(color, new Position(row, 3)));
+        placePiece(new King(color, new Position(row, 4)));
+        placePiece(new Bishop(color, new Position(row, 5)));
+        placePiece(new Knight(color, new Position(row, 6)));
+        placePiece(new Rook(color, new Position(row, 7)));
     }
 
     /**
