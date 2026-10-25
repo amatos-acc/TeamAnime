@@ -150,7 +150,7 @@ public class ConsoleUI {
      * using {@code ##} for empty squares and symbols like {@code wK} for pieces.
      */
     public void displayBoard() {
-        // TODO(16): Print the board in the format shown on page 8 of the instructions:
+        // Prints the board in the format shown on page 8 of the instructions:
         //
         //        A  B  C  D  E  F  G  H
         //     8  bR bN bB bQ bK bB bN bR  8
@@ -159,15 +159,24 @@ public class ConsoleUI {
         //     ...
         //     1  wR wN wB wQ wK wB wN wR  1
         //        A  B  C  D  E  F  G  H
-        //
-        //   Hints:
-        //   - Board board = game.getBoard();
-        //   - Outer loop: row 0..7, printing rank label (8 - row). Inner loop: col 0..7.
-        //   - Piece p = board.getPiece(new Position(row, col));
-        //     print p == null ? EMPTY_SQUARE : p.getDisplaySymbol()
-        //   - Use out.print / out.println (NOT System.out) so tests can capture the output.
-        //   - Repeating the labels on the right/bottom is optional, but it makes the board easier to read.
-        out.println("[board display not implemented yet - TODO 16 in ConsoleUI.displayBoard]");
+
+        
+        Board board = game.getBoard();
+        
+        out.println("   A  B  C  D  E  F  G  H");
+        
+        for (int row = 0; row < Position.BOARD_SIZE; row++) {
+            out.print((Position.BOARD_SIZE - row) + "  ");
+            for (int col = 0; col < Position.BOARD_SIZE; col++) {
+                Piece p = board.getPiece(new Position(row, col));
+                out.print(p == null ? EMPTY_SQUARE : p.getDisplaySymbol());
+                out.print(" ");
+            }
+            
+            out.println((Position.BOARD_SIZE - row));
+        }
+        
+        out.println("   A  B  C  D  E  F  G  H");
     }
 
     /**
