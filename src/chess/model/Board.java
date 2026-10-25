@@ -138,16 +138,29 @@ public class Board {
      *         {@code false} if a piece blocks the path or the squares are not on a common line
      */
     public boolean isPathClear(Position from, Position to) {
-        // TODO(3): Walk from `from` toward `to` one step at a time and check each in-between square.
-        //   1. Compute rowStep = Integer.signum(to.getRow() - from.getRow())   (-1, 0, or +1)
-        //      and colStep = Integer.signum(to.getCol() - from.getCol()).
-        //   2. If the move is not straight or diagonal (|dRow| != 0, |dCol| != 0, and |dRow| != |dCol|),
-        //      return false - there is no single line to walk.
-        //   3. Start at from.offset(rowStep, colStep) and loop while the current square is not `to`.
-        //      If any square is occupied (!isEmpty(current)), return false.
-        //   4. If the loop finishes, return true.
-        //   Think about: why does a one-square move (e.g. E2 E3) never enter the loop?
-        return true; // placeholder so the project compiles; blocked-path tests in DemoDriver will FAIL until done
+        int dRow = to.getRow() - from.getRow();
+        int dCol = to.getCol() - from.getCol();
+        
+        int rowStep = Integer.signum(dRow);
+        int colStep = Integer.signum(dCol);
+        
+        boolean straight = dRow == 0 || dCol == 0;
+        boolean diagonal = Math.abs(dRow) == Math.abs(dCol);
+        
+        if (!straight && !diagonal) {
+            return false;
+        }
+        
+        Position current = from.offset(rowStep, colStep);
+        while (!current.equals(to)) {
+            if (!isEmpty(current)) {
+                return false;
+            }
+            
+            current = current.offset(rowStep, colStep);
+        }
+        
+        return true;
     }
 
     /**
