@@ -163,15 +163,23 @@ public class Board {
      * @throws IllegalStateException if {@code from} is empty
      */
     public Piece movePiece(Position from, Position to) {
-        // TODO(4): Implement the board update. The javadoc above lists the exact order.
-        //   1. Piece mover = getPiece(from); if mover is null, throw IllegalStateException.
-        //   2. Piece captured = getPiece(to); if captured != null, add it to capturedPieces.
-        //   3. Set grid[from.getRow()][from.getCol()] = null.
-        //   4. Set grid[to.getRow()][to.getCol()] = mover.
-        //   5. Call mover.move(to) so the piece's own position (and hasMoved flag) stay in sync.
-        //   6. return captured;
-        //   Why is it important that Game validates BEFORE calling this method?
-        return null; // placeholder: currently the board does not change at all
+
+        Piece mover = getPiece(from);
+        if (mover == null) {
+            throw new IllegalStateException("No piece on " + from + " to move.");
+        }
+        
+        Piece captured = getPiece(to);
+        if (captured != null) {
+            capturedPieces.add(captured);
+        }
+        
+        grid[from.getRow()][from.getCol()] = null;
+        grid[to.getRow()][to.getCol()] = mover;
+        
+        mover.move(to);
+        
+        return captured;
     }
 
     /**
