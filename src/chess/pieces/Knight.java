@@ -29,10 +29,10 @@ public class Knight extends Piece {
      */
     @Override
     public boolean isValidPattern(Position target, Board board) {
-        // TODO(8): Let dr = |rowDelta(target)| and dc = |colDelta(target)|.
         //   The move is an L when (dr == 2 && dc == 1) || (dr == 1 && dc == 2).
-        //   Test from G1: F3 and H3 valid; G3, E2 (friendly pawn - rejected elsewhere), and G1 itself invalid.
-        return false;
+        int dr = Math.abs(rowDelta(target));
+        int dc = Math.abs(colDelta(target));
+        return (dr == 2 && dc == 1) || (dr == 1 && dc == 2);
     }
 
     /**
@@ -42,9 +42,7 @@ public class Knight extends Piece {
      */
     @Override
     public boolean requiresClearPath() {
-        // TODO(9): Return the value that lets the knight jump. Then explain (in your report) why
-        //   overriding this one method is better than adding "if (piece instanceof Knight)" in Game.
-        return true;
+        return false;
     }
 
     /**
