@@ -34,8 +34,7 @@ public class Queen extends Piece {
      */
     @Override
     public boolean isValidPattern(Position target, Board board) {
-        // TODO(7): Combine the two helpers you used for Rook and Bishop.
-        return false;
+        return isDiagonal(target) || isStraightLine(target);
     }
 
     /**

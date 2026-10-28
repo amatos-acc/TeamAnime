@@ -29,9 +29,7 @@ public class Bishop extends Piece {
      */
     @Override
     public boolean isValidPattern(Position target, Board board) {
-        // TODO(6): One line, mirroring Rook.isValidPattern - but use the diagonal helper from Piece.
-        //   (Make sure you finished TODO 5, Piece.isDiagonal, first.)
-        return false;
+        return isDiagonal(target);
     }
 
     /**
