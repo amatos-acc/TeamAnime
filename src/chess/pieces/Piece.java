@@ -193,10 +193,8 @@ public abstract class Piece {
      * @return {@code true} for a diagonal move
      */
     protected boolean isDiagonal(Position target) {
-        // TODO(5): A move is diagonal when the absolute row change equals the absolute column change.
-        //   Use Math.abs(rowDelta(target)) and Math.abs(colDelta(target)).
-        //   Look at isStraightLine() above for the style to follow.
-        return false;
+        // A move is diagonal when the absolute row change equals the absolute column change.
+        return Math.abs(rowDelta(target)) == Math.abs(colDelta(target));
     }
 
     // ------------------------------------------------------------------
