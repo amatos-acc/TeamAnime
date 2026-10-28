@@ -29,7 +29,7 @@ public class Knight extends Piece {
      */
     @Override
     public boolean isValidPattern(Position target, Board board) {
-        //   The move is an L when (dr == 2 && dc == 1) || (dr == 1 && dc == 2).
+        // The move is an L when (dr == 2 && dc == 1) || (dr == 1 && dc == 2).
         int dr = Math.abs(rowDelta(target));
         int dc = Math.abs(colDelta(target));
         return (dr == 2 && dc == 1) || (dr == 1 && dc == 2);

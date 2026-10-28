@@ -31,10 +31,7 @@ public class King extends Piece {
      */
     @Override
     public boolean isValidPattern(Position target, Board board) {
-        // TODO(10): Valid when |rowDelta| <= 1 and |colDelta| <= 1.
-        //   (canMoveTo already rejects target == current square, so you don't need to check for 0,0.)
-        //   Optional advanced rule: castling would go here (and is "O-O"/"O-O-O" input) - not required.
-        return false;
+        return (Math.abs(rowDelta(target)) <= 1) && (Math.abs(colDelta(target)) <= 1);
     }
 
     /**
