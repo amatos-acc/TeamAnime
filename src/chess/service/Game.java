@@ -138,10 +138,15 @@ public class Game {
                     + from + " to " + to + ".");
         }
 
-        // TODO(13): Reject a move whose path is blocked.
-        //   Only applies when mover.requiresClearPath() is true (another polymorphic call - Knight says false).
-        //   Use board.isPathClear(from, to); on failure return a message like
-        //   "The path from A1 to A3 is blocked."
+        // Rejects a move whose path is blocked.
+        // Only applies when mover.requiresClearPath() is true (another polymorphic call - Knight says false).
+     
+        if (mover.requiresClearPath()) {
+            if (!board.isPathClear(from, to)) {
+                return MoveResult.failure("A " + mover.getName() + " is blocked from "
+                    + from + " to " + to + ".");
+            }
+        } 
 
         Piece captured = board.movePiece(from, to);
         String description = mover.getName() + " " + from + " -> " + to;
