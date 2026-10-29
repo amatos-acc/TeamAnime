@@ -23,8 +23,8 @@ import java.util.Scanner;
  */
 public class ConsoleUI {
 
-    /** Symbol printed for an empty square, as specified in the assignment. */
-    private static final String EMPTY_SQUARE = "##";
+    /** Empty spaces printed for an empty square. */
+    private static final String EMPTY_SQUARE = "  ";
 
     /** The game being played. */
     private final Game game;
