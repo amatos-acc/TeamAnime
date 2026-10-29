@@ -65,7 +65,7 @@ Row 0 = rank 8, column 0 = file A. Example: `E2` → `[6][4]`. See `Position` Ja
 - No check, checkmate, or stalemate detection; moves that expose your own king are allowed.
 - Since check isn't enforced, **capturing the opposing king ends the game**.
 - No castling or en passant.
-- **Pawn promotion:** _describe your choice: either "a pawn reaching the last rank stays a pawn and can no longer move", or "auto-promotes to a queen" if you did optional TODO 14._
+- **Pawn promotion:** a pawn reaching the last rank is automatically promoted to a queen; the player cannot choose a rook, bishop, or knight instead.
 - No draw detection (50-move rule, repetition, insufficient material).
 - _Anything else you know is missing or buggy._
 

@@ -6,6 +6,7 @@ import chess.model.Player;
 import chess.model.Position;
 import chess.pieces.King;
 import chess.pieces.Pawn;
+import chess.pieces.Queen;
 import chess.pieces.Piece;
 
 import java.util.ArrayList;
@@ -175,9 +176,9 @@ public class Game {
     /**
      * Applies this prototype's last-rank rule for a pawn that just moved to {@code square}.
      *
-     * <p>Default Phase 1 behavior: the pawn simply stays a pawn. Because pawns
-     * only move forward, it can no longer move. This limitation is documented
-     * in the README.</p>
+     * <p>Simplified rule: the pawn is always promoted to a queen of the same
+     * color; the player cannot choose another piece. This limitation is
+     * documented in the README.</p>
      *
      * @param square the destination square of the move just made
      * @return a note to append to the move description, or {@code null} if nothing happened
@@ -187,11 +188,9 @@ public class Game {
         if (!(piece instanceof Pawn) || !((Pawn) piece).isOnLastRank()) {
             return null;
         }
-        // TODO(14, OPTIONAL): Auto-promote to a queen instead of leaving a stuck pawn:
-        //   board.placePiece(new Queen(piece.getColor(), square));   // (import chess.pieces.Queen)
-        //   return "Pawn promoted to Queen";
-        //   If you do this, update the README "Known limitations" section and the class javadoc above.
-        return "Pawn reached the last rank (promotion is not implemented in this prototype)";
+        
+        board.placePiece(new Queen(piece.getColor(), square));
+        return "Pawn promoted to Queen";
     }
 
     /**

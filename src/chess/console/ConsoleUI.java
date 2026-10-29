@@ -241,7 +241,8 @@ public class ConsoleUI {
         out.println("  reset       start a new game");
         out.println("  help        show this message");
         out.println("  quit        exit the program");
-        out.println("Simplified rules: no check/checkmate, castling, en passant, or promotion.");
+        out.println("Simplified rules: no check/checkmate, castling, or en passant.");
+        out.println("A pawn reaching the last rank is automatically promoted to a queen.");
         out.println("Capturing the opposing king wins the game.");
     }
 
