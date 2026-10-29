@@ -36,23 +36,22 @@ public class Pawn extends Piece {
      */
     @Override
     public boolean isValidPattern(Position target, Board board) {
-        // TODO(11): This is the most involved piece. Suggested structure:
-        //   int forward = getColor().getForwardDirection();   // -1 for White, +1 for Black
-        //   int dr = rowDelta(target);
-        //   int dc = colDelta(target);
-        //
-        //   a) Single step:  dc == 0 && dr == forward            -> valid only if board.isEmpty(target)
-        //   b) Double step:  dc == 0 && dr == 2 * forward
-        //                    && getPosition().getRow() == getColor().getPawnStartRow()
-        //                    -> valid only if BOTH the middle square and target are empty
-        //                       (middle square = getPosition().offset(forward, 0))
-        //   c) Capture:      |dc| == 1 && dr == forward          -> valid only if target holds an ENEMY piece
-        //                    (canMoveTo already rejects friendly pieces, but checking != null is still required:
-        //                     a pawn may NOT move diagonally into an empty square)
-        //   d) Anything else -> false (including any backward move)
-        //
-        //   Test cases: E2 E3, E2 E4 valid at start; E2 E5 invalid; E4 E3 (backward) invalid;
-        //   E2 E4 when E3 is occupied invalid; E4 D5 valid only if D5 has an enemy.
+        int forward = getColor().getForwardDirection();  
+        int dr = rowDelta(target);
+        int dc = colDelta(target);
+        
+        if (dc == 0 && dr == forward) {
+            return board.isEmpty(target);
+        } 
+        
+        if (dc == 0 && dr == (2 * forward) && getPosition().getRow() == getColor().getPawnStartRow()) {
+            Position middleSquare = getPosition().offset(forward, 0);
+            return board.isEmpty(target) && board.isEmpty(middleSquare);
+        }
+        
+        if (Math.abs(dc) == 1 && dr == forward) {
+            return !board.isEmpty(target) && getColor() != board.getPiece(target).getColor();
+        }
         return false;
     }
 
