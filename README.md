@@ -93,6 +93,7 @@ Row 0 = rank 8, column 0 = file A. Example: `E2` → `[6][4]`. See `Position` Ja
 - No castling or en passant.
 - **Pawn promotion:** a pawn reaching the last rank is automatically promoted to a queen; the player cannot choose a rook, bishop, or knight instead.
 - No draw detection (50-move rule, repetition, insufficient material).
+- **Known issue:** after the game ends, a rejected move still prints "It is still White's turn." (or Black's). The move is correctly refused; only the message is misleading. The line comes from `ConsoleUI.handleMove`, which prints it after every rejected move without checking whether the game is over.
 
 ## Project structure
 ```
