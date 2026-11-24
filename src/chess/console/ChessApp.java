@@ -1,6 +1,7 @@
 package chess.console;
 
 import chess.service.Game;
+import chess.util.LogConfig;
 
 /**
  * Entry point for the interactive console chess application.
@@ -24,6 +25,7 @@ public final class ChessApp {
     public static void main(String[] args) {
         String whiteName = args.length > 0 ? args[0] : null;
         String blackName = args.length > 1 ? args[1] : null;
+        LogConfig.init();
         new ConsoleUI(new Game(whiteName, blackName), System.in, System.out).run();
     }
 }

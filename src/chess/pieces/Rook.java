@@ -6,10 +6,8 @@ import chess.model.Position;
 
 /**
  * A rook: moves any number of squares along a rank or file.
- * Intervening squares must be empty (enforced by {@link Piece#canMoveTo}).
- *
- * <p>This class is the fully worked example of a piece subclass. Use it as
- * the model for the other five.</p>
+ * Intervening squares must be empty (enforced by {@link Piece#checkMove}).
+ * A rook also takes part in castling; see {@link King}.
  */
 public class Rook extends Piece {
 
@@ -36,22 +34,12 @@ public class Rook extends Piece {
     }
 
     /**
-     * Returns the rook's board code.
+     * Identifies this piece as a rook; the symbol and name come from {@link PieceType#ROOK}.
      *
-     * @return {@code 'R'}
+     * @return {@link PieceType#ROOK}
      */
     @Override
-    public char getSymbol() {
-        return 'R';
-    }
-
-    /**
-     * Returns the type name.
-     *
-     * @return {@code "Rook"}
-     */
-    @Override
-    public String getName() {
-        return "Rook";
+    public PieceType getType() {
+        return PieceType.ROOK;
     }
 }

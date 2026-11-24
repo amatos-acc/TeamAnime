@@ -1,10 +1,13 @@
 package chess.console;
 
 import chess.model.Board;
+import chess.model.Move;
+import chess.pieces.PieceType;
 import chess.model.PieceColor;
 import chess.model.Position;
 import chess.pieces.Piece;
 import chess.service.Game;
+import chess.service.GameStatus;
 import chess.service.MoveResult;
 
 import java.io.InputStream;
@@ -56,7 +59,7 @@ public class ConsoleUI {
      * Runs the read-evaluate-print loop until the user quits or input ends.
      */
     public void run() {
-        out.println("=== Console Chess (simplified prototype) ===");
+        out.println("=== Console Chess ===");
         out.println("Type 'help' for commands.");
         displayBoard();
 
@@ -71,7 +74,6 @@ public class ConsoleUI {
             Command command = parser.parse(in.nextLine());
             running = handle(command);
         }
-        game.end();
     }
 
     /**
@@ -86,7 +88,7 @@ public class ConsoleUI {
                 out.println("Thanks for playing. Goodbye!");
                 return false;
             case MOVE:
-                handleMove(command.getFrom(), command.getTo());
+                handleMove(command.getFrom(), command.getTo(), command.getPromotion());
                 break;
             case MOVES:
                 displayLegalMoves(command.getFrom());
@@ -120,13 +122,22 @@ public class ConsoleUI {
      * Asks the game to make a move and reports the result.
      *
      * @param from source square
-     * @param to   destination square
+     * @param to        destination square
+     * @param promotion promotion choice typed by the user, or {@code null}
      */
-    private void handleMove(Position from, Position to) {
-        MoveResult result = game.tryMove(from, to);
+    private void handleMove(Position from, Position to, PieceType promotion) {
+        MoveResult result = game.tryMove(new Move(from, to, promotion));
         if (result.isSuccess()) {
             out.println(result.getMessage());
             displayBoard();
+            if (result.getStatus() == GameStatus.CHECK) {
+                out.println("CHECK! " + game.getCurrentPlayer() + " must get out of check.");
+            } else if (result.getStatus().isGameOver()) {
+                out.println("*** " + game.describeOutcome() + ". Type 'reset' to play again. ***");
+            }
+        } else if (game.isGameOver()) {
+            // Phase 1 bug fix: do not claim it is someone's turn once the game has ended.
+            out.println("Illegal move: " + result.getMessage());
         } else {
             out.println("Illegal move: " + result.getMessage());
             out.println("The board is unchanged. It is still "
@@ -234,6 +245,8 @@ public class ConsoleUI {
     private void displayHelp() {
         out.println("Commands:");
         out.println("  E2 E4       move the piece on E2 to E4 (captures are detected automatically)");
+        out.println("  E1 G1       castle (move the king two squares toward the rook)");
+        out.println("  E7 E8 N     move a pawn to the last rank and promote it (Q, R, B, or N; default Q)");
         out.println("  moves E2    list the squares the piece on E2 can move to");
         out.println("  captured    show captured pieces");
         out.println("  history     show the moves played so far");
@@ -241,9 +254,8 @@ public class ConsoleUI {
         out.println("  reset       start a new game");
         out.println("  help        show this message");
         out.println("  quit        exit the program");
-        out.println("Simplified rules: no check/checkmate, castling, or en passant.");
-        out.println("A pawn reaching the last rank is automatically promoted to a queen.");
-        out.println("Capturing the opposing king wins the game.");
+        out.println("Full rules: check, checkmate, stalemate, castling, en passant, and promotion.");
+        out.println("Not implemented: draws by repetition, the 50-move rule, or insufficient material.");
     }
 
     /**

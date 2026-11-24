@@ -38,22 +38,12 @@ public class Queen extends Piece {
     }
 
     /**
-     * Returns the queen's board code.
+     * Identifies this piece as a queen; the symbol and name come from {@link PieceType#QUEEN}.
      *
-     * @return {@code 'Q'}
+     * @return {@link PieceType#QUEEN}
      */
     @Override
-    public char getSymbol() {
-        return 'Q';
-    }
-
-    /**
-     * Returns the type name.
-     *
-     * @return {@code "Queen"}
-     */
-    @Override
-    public String getName() {
-        return "Queen";
+    public PieceType getType() {
+        return PieceType.QUEEN;
     }
 }

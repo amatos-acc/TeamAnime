@@ -12,8 +12,10 @@ import chess.model.Position;
  * <p>The pawn is the only piece whose pattern depends on what occupies the
  * destination, which is why {@link Piece#isValidPattern} receives the board.</p>
  *
- * <p>Simplified prototype: en passant is not supported. See
- * {@link chess.service.Game} for what happens on the last rank.</p>
+ * <p>En passant: right after an enemy pawn advances two squares and lands
+ * beside this pawn, this pawn may capture it by moving diagonally onto the
+ * square it skipped ({@link Board#getEnPassantTarget()}). A pawn reaching the
+ * last rank is promoted by {@link Board#applyMove(chess.model.Move)}.</p>
  */
 public class Pawn extends Piece {
 
@@ -50,9 +52,28 @@ public class Pawn extends Piece {
         }
         
         if (Math.abs(dc) == 1 && dr == forward) {
-            return !board.isEmpty(target) && getColor() != board.getPiece(target).getColor();
+            if (board.isEmpty(target)) {
+                // En passant: the only diagonal pawn move onto an empty square. The board
+                // remembers the square an enemy pawn skipped over on the previous move.
+                return target.equals(board.getEnPassantTarget());
+            }
+            return getColor() != board.getPiece(target).getColor();
         }
         return false;
+    }
+
+    /**
+     * A pawn attacks the two squares diagonally in front of it, whether or not
+     * anything stands there. (It moves straight but captures diagonally, so the
+     * inherited {@link Piece#attacks} would be wrong.)
+     *
+     * @param target the square in question
+     * @param board  unused; pawn attacks do not depend on occupancy
+     * @return {@code true} if {@code target} is one square diagonally forward
+     */
+    @Override
+    public boolean attacks(Position target, Board board) {
+        return Math.abs(colDelta(target)) == 1 && rowDelta(target) == getColor().getForwardDirection();
     }
 
     /**
@@ -61,26 +82,26 @@ public class Pawn extends Piece {
      * @return {@code true} if the pawn stands on the opponent's back rank
      */
     public boolean isOnLastRank() {
-        return getPosition().getRow() == getColor().opposite().getBackRankRow();
+        return isPromotionSquare(getPosition());
     }
 
     /**
-     * Returns the pawn's board code.
+     * Checks whether a pawn of this color arriving on {@code square} must be promoted.
      *
-     * @return {@code 'p'} (lower case, as specified in the assignment)
+     * @param square a destination square
+     * @return {@code true} if {@code square} is on the opponent's back rank
      */
-    @Override
-    public char getSymbol() {
-        return 'p';
+    public boolean isPromotionSquare(Position square) {
+        return square.getRow() == getColor().opposite().getBackRankRow();
     }
 
     /**
-     * Returns the type name.
+     * Identifies this piece as a pawn; the symbol and name come from {@link PieceType#PAWN}.
      *
-     * @return {@code "Pawn"}
+     * @return {@link PieceType#PAWN}
      */
     @Override
-    public String getName() {
-        return "Pawn";
+    public PieceType getType() {
+        return PieceType.PAWN;
     }
 }

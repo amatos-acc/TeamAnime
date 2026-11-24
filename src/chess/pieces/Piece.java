@@ -21,8 +21,9 @@ import java.util.Objects;
  * <em>template methods</em>: the superclass fixes the sequence of checks and
  * subclasses fill in the piece-specific step.</p>
  *
- * <p>Simplified prototype: moves are not checked for king safety, so a move
- * that leaves one's own king attacked is still accepted.</p>
+ * <p>A piece checks only its own movement rules. Rules that need the whole
+ * position (king safety, castling through check) belong to
+ * {@link chess.service.MoveValidator}.</p>
  */
 public abstract class Piece {
 
@@ -68,18 +69,30 @@ public abstract class Piece {
     public abstract boolean isValidPattern(Position target, Board board);
 
     /**
+     * Returns which kind of piece this is. Each subclass returns its own constant;
+     * the symbol, name, and value come from the {@link PieceType}.
+     *
+     * @return this piece's type
+     */
+    public abstract PieceType getType();
+
+    /**
      * Returns the one-letter type code used on the board display.
      *
      * @return one of {@code p, R, N, B, Q, K}
      */
-    public abstract char getSymbol();
+    public char getSymbol() {
+        return getType().getSymbol();
+    }
 
     /**
      * Returns the piece type's name, e.g. {@code "Knight"}.
      *
      * @return the type name
      */
-    public abstract String getName();
+    public String getName() {
+        return getType().getDisplayName();
+    }
 
     // ------------------------------------------------------------------
     // Behavior subclasses may override
@@ -100,30 +113,83 @@ public abstract class Piece {
     // ------------------------------------------------------------------
 
     /**
-     * Checks every rule this prototype enforces for moving this piece to {@code target}:
-     * target differs from the current square, target is not occupied by a friendly piece,
-     * the move fits the piece's pattern, and (if required) the path is clear.
+     * Runs the piece-level checks for moving this piece to {@code target}, in a fixed order,
+     * and reports the first one that fails: target differs from the current square, target
+     * is not occupied by a friendly piece, the move fits the piece's pattern, and (if
+     * required) the path is clear.
+     *
+     * <p>This is the single place where that sequence lives. {@link #canMoveTo} turns the
+     * answer into a boolean, and {@link chess.service.MoveValidator} turns it into a message
+     * for the player. King safety is <em>not</em> checked here, because it depends on the
+     * whole board, not on one piece.</p>
      *
      * @param target destination square
      * @param board  current board
-     * @return {@code true} if the move is allowed
+     * @return {@link MoveProblem#NONE} if every check passes, otherwise the first failure
      */
-    public boolean canMoveTo(Position target, Board board) {
+    public MoveProblem checkMove(Position target, Board board) {
         if (target.equals(position)) {
-            return false;
+            return MoveProblem.SAME_SQUARE;
         }
         Piece occupant = board.getPiece(target);
         if (occupant != null && occupant.getColor() == color) {
-            return false;
+            return MoveProblem.OWN_PIECE;
         }
         if (!isValidPattern(target, board)) {
+            return MoveProblem.ILLEGAL_PATTERN;
+        }
+        if (requiresClearPath() && !board.isPathClear(position, target)) {
+            return MoveProblem.BLOCKED_PATH;
+        }
+        return MoveProblem.NONE;
+    }
+
+    /**
+     * Checks the piece-level rules for moving to {@code target} (see {@link #checkMove}).
+     * Does not check whether the move would leave the mover's king in check.
+     *
+     * @param target destination square
+     * @param board  current board
+     * @return {@code true} if the move passes every piece-level check
+     */
+    public boolean canMoveTo(Position target, Board board) {
+        return checkMove(target, board) == MoveProblem.NONE;
+    }
+
+    /**
+     * Checks whether this piece attacks {@code target}, i.e. could capture an enemy piece
+     * standing there. Used to decide whether a king is in check.
+     *
+     * <p>Unlike {@link #canMoveTo}, this ignores what stands on {@code target}: a piece
+     * still "attacks" a square occupied by its own side (it defends it). Pawns and kings
+     * override this because they move differently from how they attack.</p>
+     *
+     * @param target the square in question
+     * @param board  current board
+     * @return {@code true} if this piece attacks {@code target}
+     */
+    public boolean attacks(Position target, Board board) {
+        if (target.equals(position) || !isValidPattern(target, board)) {
             return false;
         }
         return !requiresClearPath() || board.isPathClear(position, target);
     }
 
     /**
-     * Lists every square this piece could move to under the prototype's rules.
+     * Returns an independent copy of this piece (same type, color, square, and moved flag).
+     * {@link Board#copy()} uses this so a trial move on the copy never changes the real game.
+     *
+     * @return a new piece equal in state to this one
+     */
+    public Piece copy() {
+        Piece clone = PieceFactory.create(getType(), color, position);
+        clone.hasMoved = hasMoved;
+        return clone;
+    }
+
+    /**
+     * Lists every square that passes the piece-level checks (see {@link #checkMove}).
+     * For moves that are also king-safe, use {@link chess.service.MoveValidator}.
      *
      * @param board current board
      * @return new list of candidate destinations (may be empty)

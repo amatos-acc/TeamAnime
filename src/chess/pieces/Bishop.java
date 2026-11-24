@@ -33,22 +33,12 @@ public class Bishop extends Piece {
     }
 
     /**
-     * Returns the bishop's board code.
+     * Identifies this piece as a bishop; the symbol and name come from {@link PieceType#BISHOP}.
      *
-     * @return {@code 'B'}
+     * @return {@link PieceType#BISHOP}
      */
     @Override
-    public char getSymbol() {
-        return 'B';
-    }
-
-    /**
-     * Returns the type name.
-     *
-     * @return {@code "Bishop"}
-     */
-    @Override
-    public String getName() {
-        return "Bishop";
+    public PieceType getType() {
+        return PieceType.BISHOP;
     }
 }

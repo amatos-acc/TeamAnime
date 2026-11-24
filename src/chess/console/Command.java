@@ -1,6 +1,7 @@
 package chess.console;
 
 import chess.model.Position;
+import chess.pieces.PieceType;
 
 /**
  * A single parsed line of user input, produced by {@link InputParser}.
@@ -43,6 +44,9 @@ public final class Command {
     /** Explanation for INVALID commands; otherwise {@code null}. */
     private final String errorMessage;
 
+    /** Promotion choice for a MOVE command, or {@code null} if none was typed. */
+    private final PieceType promotion;
+
     /**
      * Private constructor; use the factory methods.
      *
@@ -51,11 +55,12 @@ public final class Command {
      * @param to           destination square or null
      * @param errorMessage error text or null
      */
-    private Command(Type type, Position from, Position to, String errorMessage) {
+    private Command(Type type, Position from, Position to, String errorMessage, PieceType promotion) {
         this.type = type;
         this.from = from;
         this.to = to;
         this.errorMessage = errorMessage;
+        this.promotion = promotion;
     }
 
     /**
@@ -66,7 +71,19 @@ public final class Command {
      * @return the command
      */
     public static Command move(Position from, Position to) {
-        return new Command(Type.MOVE, from, to, null);
+        return move(from, to, null);
+    }
+
+    /**
+     * Creates a move command with a promotion choice, e.g. from {@code "E7 E8 N"}.
+     *
+     * @param from      source square
+     * @param to        destination square
+     * @param promotion piece to promote to, or {@code null} for none
+     * @return a MOVE command
+     */
+    public static Command move(Position from, Position to, PieceType promotion) {
+        return new Command(Type.MOVE, from, to, null, promotion);
     }
 
     /**
@@ -76,7 +93,7 @@ public final class Command {
      * @return the command
      */
     public static Command moves(Position square) {
-        return new Command(Type.MOVES, square, null, null);
+        return new Command(Type.MOVES, square, null, null, null);
     }
 
     /**
@@ -90,7 +107,7 @@ public final class Command {
         if (type == Type.MOVE || type == Type.MOVES || type == Type.INVALID) {
             throw new IllegalArgumentException(type + " requires arguments.");
         }
-        return new Command(type, null, null, null);
+        return new Command(type, null, null, null, null);
     }
 
     /**
@@ -100,7 +117,7 @@ public final class Command {
      * @return the command
      */
     public static Command invalid(String errorMessage) {
-        return new Command(Type.INVALID, null, null, errorMessage);
+        return new Command(Type.INVALID, null, null, errorMessage, null);
     }
 
     /**
@@ -137,5 +154,14 @@ public final class Command {
      */
     public String getErrorMessage() {
         return errorMessage;
+    }
+
+    /**
+     * Returns the promotion choice typed with a MOVE command.
+     *
+     * @return the chosen piece type, or {@code null} if none was typed
+     */
+    public PieceType getPromotion() {
+        return promotion;
     }
 }

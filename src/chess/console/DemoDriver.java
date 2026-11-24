@@ -6,9 +6,11 @@ import chess.model.Position;
 import chess.pieces.King;
 import chess.pieces.Pawn;
 import chess.pieces.Piece;
-import chess.pieces.Rook;
+import chess.pieces.Queen;
 import chess.service.Game;
+import chess.service.GameStatus;
 import chess.service.MoveResult;
+import chess.util.LogConfig;
 
 
 /**
@@ -44,6 +46,7 @@ public final class DemoDriver {
      * @param args unused
      */
     public static void main(String[] args) {
+        LogConfig.silence();
         DemoDriver driver = new DemoDriver();
         driver.runAll();
     }
@@ -64,7 +67,12 @@ public final class DemoDriver {
             this::kingMoves,
             this::legalMovesHint,
             this::lastRankPawn,
-            this::kingCaptureEndsGame,
+            this::foolsMate,
+            this::checkRules,
+            this::castling,
+            this::enPassant,
+            this::promotionChoice,
+            this::stalemate,
         };
         for (Runnable scenario : scenarios) {
             try {
@@ -291,19 +299,97 @@ public final class DemoDriver {
     }
 
     /** Capturing the king ends the game and blocks further moves. */
-    private void kingCaptureEndsGame() {
-        header("Capturing the king ends the game (custom position)");
+    private void foolsMate() {
+        header("Fool's mate: F2 F3, E7 E5, G2 G4, D8 H4");
         game.start();
-        Board board = game.getBoard();
-        board.clear();
-        board.placePiece(new King(PieceColor.WHITE, pos("E1")));
-        board.placePiece(new Rook(PieceColor.WHITE, pos("A1")));
-        board.placePiece(new King(PieceColor.BLACK, pos("A8")));
-        checkMove("A1 A8", true);
-        check("Game is over", true, game.isGameOver());
-        check("White is the winner", PieceColor.WHITE,
+        checkMove("F2 F3", true);
+        checkMove("E7 E5", true);
+        checkMove("G2 G4", true);
+        MoveResult mate = checkMove("D8 H4", true);
+        check("Status is checkmate", GameStatus.CHECKMATE, mate.getStatus());
+        check("Black is the winner", PieceColor.BLACK,
                 game.getWinner() == null ? null : game.getWinner().getColor());
-        checkMove("E1 E2", false);
+        checkMove("E2 E4", false);
+        game.start();
+        check("Restart clears the result", GameStatus.IN_PROGRESS, game.getStatus());
+    }
+
+    private void checkRules() {
+        header("Check: must respond, cannot move into check");
+        game.start();
+        checkMove("E2 E4", true);
+        checkMove("F7 F6", true);
+        MoveResult check = checkMove("D1 H5", true);
+        check("Black is in check", GameStatus.CHECK, check.getStatus());
+        checkMove("A7 A6", false);
+        checkMove("G7 G6", true);
+
+        header("Pinned knight on C3 cannot move (D2 D4, E7 E6, C2 C4, F8 B4, B1 C3)");
+        game.start();
+        checkMove("D2 D4", true);
+        checkMove("E7 E6", true);
+        checkMove("C2 C4", true);
+        checkMove("F8 B4", true);
+        checkMove("B1 C3", true);
+        checkMove("A7 A6", true);
+        checkMove("C3 E4", false);
+        checkMove("A2 A3", true);
+    }
+
+    private void castling() {
+        header("Castling kingside (E1 G1) moves the rook to F1");
+        game.start();
+        checkMove("E2 E4", true);
+        checkMove("E7 E5", true);
+        checkMove("G1 F3", true);
+        checkMove("B8 C6", true);
+        checkMove("F1 C4", true);
+        checkMove("G8 F6", true);
+        checkMove("E1 G1", true);
+        check("King on G1", "wK", symbolAt("G1"));
+        check("Rook on F1", "wR", symbolAt("F1"));
+        check("H1 empty", "##", symbolAt("H1"));
+
+        header("Castling rejected with pieces in the way");
+        game.start();
+        checkMove("E1 G1", false);
+        checkMove("E1 C1", false);
+    }
+
+    private void enPassant() {
+        header("En passant right after a two-square advance");
+        game.start();
+        checkMove("E2 E4", true);
+        checkMove("A7 A6", true);
+        checkMove("E4 E5", true);
+        checkMove("D7 D5", true);
+        MoveResult ep = checkMove("E5 D6", true);
+        check("Captured a pawn", true, ep.isCapture());
+        check("D5 is now empty", "##", symbolAt("D5"));
+    }
+
+    private void promotionChoice() {
+        header("Promotion to a knight with G7 G8 N (custom position)");
+        game.start();
+        Board setup = new Board();
+        setup.placePiece(new King(PieceColor.WHITE, pos("E1")));
+        setup.placePiece(new King(PieceColor.BLACK, pos("A8")));
+        setup.placePiece(new Pawn(PieceColor.WHITE, pos("G7")));
+        game.loadPosition(setup, PieceColor.WHITE);
+        checkMove("G7 G8 N", true);
+        check("G8 holds a white knight", "wN", symbolAt("G8"));
+    }
+
+    private void stalemate() {
+        header("Stalemate (custom position): Qc7 leaves Black's king with no move");
+        Board setup = new Board();
+        setup.placePiece(new King(PieceColor.BLACK, pos("A8")));
+        setup.placePiece(new King(PieceColor.WHITE, pos("B6")));
+        setup.placePiece(new Queen(PieceColor.WHITE, pos("D7")));
+        game.loadPosition(setup, PieceColor.WHITE);
+        MoveResult result = checkMove("D7 C7", true);
+        check("Status is stalemate", GameStatus.STALEMATE, result.getStatus());
+        check("No winner", null, game.getWinner());
     }
 
     // ------------------------------------------------------------------
@@ -333,7 +419,7 @@ public final class DemoDriver {
         if (command.getType() != Command.Type.MOVE) {
             result = MoveResult.failure("Parse error: " + command.getErrorMessage());
         } else {
-            result = game.tryMove(command.getFrom(), command.getTo());
+            result = game.tryMove(new chess.model.Move(command.getFrom(), command.getTo(), command.getPromotion()));
         }
         String expected = expectAccepted ? "accepted" : "rejected";
         String observed = (result.isSuccess() ? "accepted" : "rejected") + " - " + result.getMessage();

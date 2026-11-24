@@ -1,12 +1,10 @@
 package chess.model;
 
-import chess.pieces.Bishop;
 import chess.pieces.King;
-import chess.pieces.Knight;
 import chess.pieces.Pawn;
 import chess.pieces.Piece;
-import chess.pieces.Queen;
-import chess.pieces.Rook;
+import chess.pieces.PieceFactory;
+import chess.pieces.PieceType;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -23,14 +21,32 @@ import java.util.List;
  * whether a move is legal; those decisions belong to
  * {@link chess.service.Game}. The board's invariant is that every non-null
  * {@code grid[r][c]} has {@code getPosition()} equal to {@code (r, c)}.</p>
+ *
+ * <p>Phase 2 adds what the full rules need from the board: the en passant
+ * square, attack detection for check, {@link #applyMove(Move)} for the
+ * special moves, and {@link #copy()} so a move can be tried on a copy
+ * before it is played on the real board (Prototype pattern).</p>
  */
 public class Board {
+
+    /** Back-rank piece order from file A to file H, used for both colors. */
+    private static final PieceType[] BACK_RANK = {
+        PieceType.ROOK, PieceType.KNIGHT, PieceType.BISHOP, PieceType.QUEEN,
+        PieceType.KING, PieceType.BISHOP, PieceType.KNIGHT, PieceType.ROOK
+    };
 
     /** Squares of the board; {@code null} means empty. */
     private final Piece[][] grid;
 
     /** Pieces removed from the board by captures, in capture order. */
     private final List<Piece> capturedPieces;
+
+    /**
+     * The square a pawn skipped over on the previous move by advancing two squares,
+     * or {@code null}. An enemy pawn may capture en passant by moving onto it, but
+     * only on the very next move, so every move resets this.
+     */
+    private Position enPassantTarget;
 
     /**
      * Creates an empty board. Call {@link #initialize()} to set up the starting position.
@@ -63,19 +79,9 @@ public class Board {
      * @param row   the array row of that color's back rank
      */
     private void placeBackRank(PieceColor color, int row) {
-        // Place the eight back-rank pieces on `row` using placePiece(...).
-        //   Columns 0-7 should get: Rook, Knight, Bishop, Queen, King, Bishop, Knight, Rook.
-        //   Example for column 0:  placePiece(new Rook(color, new Position(row, 0)));
-        //   Tip: the queen goes on column 3 (file D) and the king on column 4 (file E) for BOTH colors.
-        //   (The imports for every piece type are already at the top of this file.)
-        placePiece(new Rook(color, new Position(row, 0)));
-        placePiece(new Knight(color, new Position(row, 1)));
-        placePiece(new Bishop(color, new Position(row, 2)));
-        placePiece(new Queen(color, new Position(row, 3)));
-        placePiece(new King(color, new Position(row, 4)));
-        placePiece(new Bishop(color, new Position(row, 5)));
-        placePiece(new Knight(color, new Position(row, 6)));
-        placePiece(new Rook(color, new Position(row, 7)));
+        for (int col = 0; col < Position.BOARD_SIZE; col++) {
+            placePiece(PieceFactory.create(BACK_RANK[col], color, new Position(row, col)));
+        }
     }
 
     /**
@@ -88,6 +94,42 @@ public class Board {
             }
         }
         capturedPieces.clear();
+        enPassantTarget = null;
+    }
+
+    /**
+     * Returns a deep copy of this board: every piece is copied, so moves made on the
+     * copy never affect this board. Used to test whether a move would leave a king in
+     * check, and by the computer opponent to look ahead.
+     *
+     * @return an independent board in the same position
+     */
+    public Board copy() {
+        Board clone = new Board();
+        clone.restoreFrom(this);
+        return clone;
+    }
+
+    /**
+     * Replaces this board's contents with a copy of another board's position,
+     * captured pieces, and en passant square.
+     *
+     * @param source the board to copy from; must not be null
+     */
+    public void restoreFrom(Board source) {
+        if (source == this) {
+            return;
+        }
+        clear();
+        for (Piece[] rowSquares : source.grid) {
+            for (Piece piece : rowSquares) {
+                if (piece != null) {
+                    placePiece(piece.copy());
+                }
+            }
+        }
+        capturedPieces.addAll(source.capturedPieces);
+        enPassantTarget = source.enPassantTarget;
     }
 
     /**
@@ -193,6 +235,141 @@ public class Board {
         mover.move(to);
         
         return captured;
+    }
+
+    /**
+     * Works out what kind of move {@code move} would be on this board. Call this
+     * before {@link #applyMove(Move)}, since applying the move changes the answer.
+     *
+     * @param move a move whose source square is occupied
+     * @return castling, en passant, promotion, or normal
+     * @throws IllegalStateException if the source square is empty
+     */
+    public MoveType classify(Move move) {
+        Position from = move.getFrom();
+        Position to = move.getTo();
+        Piece mover = getPiece(from);
+        if (mover == null) {
+            throw new IllegalStateException("No piece on " + from + " to move.");
+        }
+        if (mover instanceof King && ((King) mover).isCastlingShape(to)) {
+            return to.getCol() > from.getCol() ? MoveType.CASTLE_KINGSIDE : MoveType.CASTLE_QUEENSIDE;
+        }
+        if (mover instanceof Pawn) {
+            if (from.getCol() != to.getCol() && isEmpty(to) && to.equals(enPassantTarget)) {
+                return MoveType.EN_PASSANT;
+            }
+            if (((Pawn) mover).isPromotionSquare(to)) {
+                return MoveType.PROMOTION;
+            }
+        }
+        return MoveType.NORMAL;
+    }
+
+    /**
+     * Plays a move that has <strong>already been validated</strong>, including the extra
+     * work special moves need: castling also moves the rook, en passant removes the pawn
+     * beside the destination, and promotion replaces the pawn (with a queen if
+     * {@link Move#getPromotion()} is null). Afterwards the en passant square is updated.
+     *
+     * @param move a legal move for the piece on its source square
+     * @return the captured piece, or {@code null} if nothing was captured
+     * @throws IllegalStateException if the source square is empty
+     */
+    public Piece applyMove(Move move) {
+        Position from = move.getFrom();
+        Position to = move.getTo();
+        MoveType type = classify(move);
+        Piece mover = getPiece(from);
+        Piece captured;
+
+        switch (type) {
+            case CASTLE_KINGSIDE:
+            case CASTLE_QUEENSIDE:
+                captured = movePiece(from, to);
+                int rookFromCol = type == MoveType.CASTLE_KINGSIDE ? King.KINGSIDE_ROOK_COL : King.QUEENSIDE_ROOK_COL;
+                int rookToCol = (from.getCol() + to.getCol()) / 2;   // the square the king passed over
+                movePiece(new Position(from.getRow(), rookFromCol), new Position(from.getRow(), rookToCol));
+                break;
+            case EN_PASSANT:
+                Position victimSquare = new Position(from.getRow(), to.getCol());
+                captured = getPiece(victimSquare);
+                grid[victimSquare.getRow()][victimSquare.getCol()] = null;
+                capturedPieces.add(captured);
+                movePiece(from, to);
+                break;
+            case PROMOTION:
+                captured = movePiece(from, to);
+                PieceType choice = move.getPromotion() == null ? PieceType.QUEEN : move.getPromotion();
+                Piece promoted = PieceFactory.create(choice, mover.getColor(), to);
+                promoted.move(to);   // marks it as having moved
+                placePiece(promoted);
+                break;
+            case NORMAL:
+            default:
+                captured = movePiece(from, to);
+                break;
+        }
+
+        boolean doubleStep = mover instanceof Pawn && Math.abs(to.getRow() - from.getRow()) == 2;
+        enPassantTarget = doubleStep ? from.offset(mover.getColor().getForwardDirection(), 0) : null;
+        return captured;
+    }
+
+    /**
+     * Returns the square an enemy pawn may capture onto en passant this move.
+     *
+     * @return the skipped square of a pawn that just advanced two squares, or {@code null}
+     */
+    public Position getEnPassantTarget() {
+        return enPassantTarget;
+    }
+
+    /**
+     * Finds the king of one color.
+     *
+     * @param color the king's color
+     * @return the king's square, or {@code null} if that king is not on the board
+     */
+    public Position findKing(PieceColor color) {
+        for (Piece[] rowSquares : grid) {
+            for (Piece piece : rowSquares) {
+                if (piece instanceof King && piece.getColor() == color) {
+                    return piece.getPosition();
+                }
+            }
+        }
+        return null;
+    }
+
+    /**
+     * Checks whether any piece of {@code attacker}'s color attacks {@code square}.
+     * Relies on polymorphism: each piece answers {@link Piece#attacks} its own way.
+     *
+     * @param square   the square in question
+     * @param attacker the color whose pieces might attack it
+     * @return {@code true} if at least one such piece attacks the square
+     */
+    public boolean isSquareAttacked(Position square, PieceColor attacker) {
+        for (Piece[] rowSquares : grid) {
+            for (Piece piece : rowSquares) {
+                if (piece != null && piece.getColor() == attacker && piece.attacks(square, this)) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    /**
+     * Checks whether the king of one color is currently attacked.
+     *
+     * @param color the color whose king to examine
+     * @return {@code true} if that king is in check; {@code false} if not, or if it is missing
+     */
+    public boolean isInCheck(PieceColor color) {
+        Position king = findKing(color);
+        return king != null && isSquareAttacked(king, color.opposite());
     }
 
     /**

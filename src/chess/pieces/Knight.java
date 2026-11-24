@@ -46,22 +46,12 @@ public class Knight extends Piece {
     }
 
     /**
-     * Returns the knight's board code.
+     * Identifies this piece as a knight; the symbol and name come from {@link PieceType#KNIGHT}.
      *
-     * @return {@code 'N'} (K is taken by the king)
+     * @return {@link PieceType#KNIGHT}
      */
     @Override
-    public char getSymbol() {
-        return 'N';
-    }
-
-    /**
-     * Returns the type name.
-     *
-     * @return {@code "Knight"}
-     */
-    @Override
-    public String getName() {
-        return "Knight";
+    public PieceType getType() {
+        return PieceType.KNIGHT;
     }
 }
