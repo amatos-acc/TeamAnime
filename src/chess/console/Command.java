@@ -54,6 +54,7 @@ public final class Command {
      * @param from         source square or null
      * @param to           destination square or null
      * @param errorMessage error text or null
+     * @param promotion    piece chosen for a pawn promotion, or null
      */
     private Command(Type type, Position from, Position to, String errorMessage, PieceType promotion) {
         this.type = type;

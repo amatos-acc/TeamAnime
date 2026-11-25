@@ -1,4 +1,7 @@
+chess.ai
 chess.console
+chess.gui
 chess.model
 chess.pieces
 chess.service
+chess.util

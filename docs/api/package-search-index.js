@@ -1,1 +1,1 @@
-packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html","k":"18"},{"l":"chess.console"},{"l":"chess.model"},{"l":"chess.pieces"},{"l":"chess.service"}];updateSearchResults();
+packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html","k":"18"},{"l":"chess.ai"},{"l":"chess.console"},{"l":"chess.gui"},{"l":"chess.model"},{"l":"chess.pieces"},{"l":"chess.service"},{"l":"chess.util"}];updateSearchResults();

@@ -288,6 +288,10 @@ public final class BoardPanel extends JComponent {
      */
     private final class MouseHandler extends MouseAdapter {
 
+        /** Creates the handler; it reads and updates the enclosing panel's drag state. */
+        MouseHandler() {
+        }
+
         /**
          * Remembers where the press happened and whether a drag may start there.
          *

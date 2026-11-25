@@ -4,5 +4,5 @@ set -euo pipefail
 cd "$(dirname "$0")/.."
 rm -rf docs/api
 javadoc -d docs/api -sourcepath src -subpackages chess -private -author -version \
-        -windowtitle "Console Chess API" -doctitle "Console Chess - Phase 1" -Xdoclint:all
+        -windowtitle "TeamAnime Chess API" -doctitle "TeamAnime Chess - Phase 2 (Swing GUI)" -Xdoclint:all
 echo "Javadoc -> docs/api/index.html"

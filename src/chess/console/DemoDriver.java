@@ -314,6 +314,7 @@ public final class DemoDriver {
         check("Restart clears the result", GameStatus.IN_PROGRESS, game.getStatus());
     }
 
+    /** Check: a side in check must get out of it, and a pinned piece may not expose its king. */
     private void checkRules() {
         header("Check: must respond, cannot move into check");
         game.start();
@@ -336,6 +337,7 @@ public final class DemoDriver {
         checkMove("A2 A3", true);
     }
 
+    /** Castling: castling kingside moves the rook to F1, and castling through pieces is refused. */
     private void castling() {
         header("Castling kingside (E1 G1) moves the rook to F1");
         game.start();
@@ -356,6 +358,7 @@ public final class DemoDriver {
         checkMove("E1 C1", false);
     }
 
+    /** En passant: allowed only immediately after the enemy pawn's two-square advance. */
     private void enPassant() {
         header("En passant right after a two-square advance");
         game.start();
@@ -368,6 +371,7 @@ public final class DemoDriver {
         check("D5 is now empty", "##", symbolAt("D5"));
     }
 
+    /** Promotion: a pawn can promote to a chosen piece, such as a knight. */
     private void promotionChoice() {
         header("Promotion to a knight with G7 G8 N (custom position)");
         game.start();
@@ -380,6 +384,7 @@ public final class DemoDriver {
         check("G8 holds a white knight", "wN", symbolAt("G8"));
     }
 
+    /** Stalemate: a custom position where the side to move has no legal move and is not in check. */
     private void stalemate() {
         header("Stalemate (custom position): Qc7 leaves Black's king with no move");
         Board setup = new Board();

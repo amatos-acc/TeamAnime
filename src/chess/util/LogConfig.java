@@ -91,6 +91,10 @@ public final class LogConfig {
      */
     private static final class LineFormatter extends Formatter {
 
+        /** Creates the formatter. */
+        LineFormatter() {
+        }
+
         /** Timestamp format used at the start of each line. */
         private static final DateTimeFormatter TIME = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 
