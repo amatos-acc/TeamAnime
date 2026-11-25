@@ -1,0 +1,482 @@
+2026-11-24 18:02:17 INFO    [ChessGuiApp] Starting the Swing chess application on Java 26.0.2.1
+2026-11-24 18:02:18 INFO    [Game] New game: White vs Black
+2026-11-24 18:02:18 INFO    [GameController] GUI started a new game: White vs Black
+2026-11-24 18:09:33 INFO    [ChessFrame] Application closed by the user.
+2026-11-24 18:28:41 INFO    [ChessGuiApp] Starting the Swing chess application on Java 26.0.2.1
+2026-11-24 18:28:41 INFO    [Game] New game: White vs Black
+2026-11-24 18:28:41 INFO    [GameController] GUI started a new game: White vs Black
+2026-11-24 18:30:00 INFO    [Game] White played E2 E4 -> IN_PROGRESS
+2026-11-24 18:30:24 INFO    [Game] Black played G8 F6 -> IN_PROGRESS
+2026-11-24 18:30:37 INFO    [Game] New game: White vs Black
+2026-11-24 18:30:37 INFO    [GameController] GUI started a new game: White vs Black
+2026-11-24 18:30:39 INFO    [Game] White played E2 E4 -> IN_PROGRESS
+2026-11-24 18:30:44 INFO    [Game] Black played D7 D5 -> IN_PROGRESS
+2026-11-24 18:30:51 INFO    [Game] White played E4 D5 -> IN_PROGRESS
+2026-11-24 18:31:12 INFO    [Game] New game: White vs Black
+2026-11-24 18:31:12 INFO    [GameController] GUI started a new game: White vs Black
+2026-11-24 18:31:33 FINE    [Game] Rejected White move E2 E5: A Pawn cannot move from E2 to E5.
+2026-11-24 18:31:41 FINE    [Game] Rejected White move A1 A5: A Rook is blocked from A1 to A5.
+2026-11-24 18:31:54 FINE    [Game] Rejected White move D2 E3: A Pawn cannot move from D2 to E3.
+2026-11-24 18:32:05 INFO    [Game] New game: White vs Black
+2026-11-24 18:32:05 INFO    [GameController] GUI started a new game: White vs Black
+2026-11-24 18:32:08 INFO    [Game] White played E2 E4 -> IN_PROGRESS
+2026-11-24 18:32:12 INFO    [Game] Black played F7 F6 -> IN_PROGRESS
+2026-11-24 18:32:16 INFO    [Game] White played D1 H5 -> CHECK
+2026-11-24 18:33:14 INFO    [Game] New game: White vs Black
+2026-11-24 18:33:14 INFO    [GameController] GUI started a new game: White vs Black
+2026-11-24 18:33:17 INFO    [Game] White played E2 E4 -> IN_PROGRESS
+2026-11-24 18:33:18 INFO    [Game] Black played F7 F6 -> IN_PROGRESS
+2026-11-24 18:33:19 INFO    [Game] White played D1 H5 -> CHECK
+2026-11-24 18:33:25 FINE    [Game] Rejected Black move A7 A6: Your king is in check, and that move does not get it out of check.
+2026-11-24 18:33:38 INFO    [Game] New game: White vs Black
+2026-11-24 18:33:38 INFO    [GameController] GUI started a new game: White vs Black
+2026-11-24 18:33:40 INFO    [Game] White played F2 F3 -> IN_PROGRESS
+2026-11-24 18:33:42 INFO    [Game] Black played E7 E5 -> IN_PROGRESS
+2026-11-24 18:33:43 INFO    [Game] White played G2 G4 -> IN_PROGRESS
+2026-11-24 18:33:45 INFO    [Game] Black played D8 H4 -> CHECKMATE
+2026-11-24 18:33:45 INFO    [ChessFrame] Game over: Checkmate. Black wins
+2026-11-24 18:34:15 INFO    [Game] New game: White vs Black
+2026-11-24 18:34:15 INFO    [GameController] GUI started a new game: White vs Black
+2026-11-24 18:34:18 INFO    [Game] White played E2 E3 -> IN_PROGRESS
+2026-11-24 18:34:20 INFO    [Game] Black played A7 A5 -> IN_PROGRESS
+2026-11-24 18:34:26 INFO    [Game] White played D1 H5 -> IN_PROGRESS
+2026-11-24 18:34:31 INFO    [Game] Black played A8 A6 -> IN_PROGRESS
+2026-11-24 18:34:38 INFO    [Game] White played H5 A5 -> IN_PROGRESS
+2026-11-24 18:34:45 INFO    [Game] Black played H7 H5 -> IN_PROGRESS
+2026-11-24 18:34:49 INFO    [Game] White played H2 H4 -> IN_PROGRESS
+2026-11-24 18:34:54 INFO    [Game] Black played A6 H6 -> IN_PROGRESS
+2026-11-24 18:35:04 INFO    [Game] White played A5 C7 -> IN_PROGRESS
+2026-11-24 18:35:10 INFO    [Game] Black played F7 F6 -> IN_PROGRESS
+2026-11-24 18:35:16 INFO    [Game] White played C7 D7 -> CHECK
+2026-11-24 18:35:23 INFO    [Game] Black played E8 F7 -> IN_PROGRESS
+2026-11-24 18:35:30 INFO    [Game] White played D7 B7 -> IN_PROGRESS
+2026-11-24 18:35:39 INFO    [Game] Black played D8 D3 -> IN_PROGRESS
+2026-11-24 18:35:46 INFO    [Game] White played B7 B8 -> IN_PROGRESS
+2026-11-24 18:35:51 INFO    [Game] Black played D3 H7 -> IN_PROGRESS
+2026-11-24 18:35:56 INFO    [Game] White played B8 C8 -> IN_PROGRESS
+2026-11-24 18:36:01 INFO    [Game] Black played F7 G6 -> IN_PROGRESS
+2026-11-24 18:36:05 INFO    [Game] White played C8 E6 -> STALEMATE
+2026-11-24 18:36:05 INFO    [ChessFrame] Game over: Stalemate. The game is a draw
+2026-11-25 17:07:42 INFO    [ChessFrame] Application closed by the user.
+2026-11-25 17:07:57 INFO    [ChessGuiApp] Starting the Swing chess application on Java 26.0.2.1
+2026-11-25 17:07:57 INFO    [Game] New game: White vs Black
+2026-11-25 17:07:57 INFO    [GameController] GUI started a new game: White vs Black
+2026-11-25 17:08:21 INFO    [Game] White played E2 E4 -> IN_PROGRESS
+2026-11-25 17:08:23 INFO    [Game] Black played E7 E5 -> IN_PROGRESS
+2026-11-25 17:08:27 INFO    [Game] White played G2 G3 -> IN_PROGRESS
+2026-11-25 17:08:32 INFO    [Game] New game: White vs Black
+2026-11-25 17:08:32 INFO    [GameController] GUI started a new game: White vs Black
+2026-11-25 17:08:33 INFO    [Game] White played E2 E4 -> IN_PROGRESS
+2026-11-25 17:08:34 INFO    [Game] Black played E7 E5 -> IN_PROGRESS
+2026-11-25 17:08:36 INFO    [Game] White played G1 F3 -> IN_PROGRESS
+2026-11-25 17:08:39 INFO    [Game] Black played B8 C6 -> IN_PROGRESS
+2026-11-25 17:08:42 INFO    [Game] White played F1 C4 -> IN_PROGRESS
+2026-11-25 17:08:46 INFO    [Game] Black played G8 F6 -> IN_PROGRESS
+2026-11-25 17:08:49 INFO    [Game] White played E1 G1 -> IN_PROGRESS
+2026-11-25 17:09:26 INFO    [Game] New game: White vs Black
+2026-11-25 17:09:26 INFO    [GameController] GUI started a new game: White vs Black
+2026-11-25 17:09:30 INFO    [Game] White played D2 D4 -> IN_PROGRESS
+2026-11-25 17:09:31 INFO    [Game] Black played D7 D5 -> IN_PROGRESS
+2026-11-25 17:09:35 INFO    [Game] White played B1 C3 -> IN_PROGRESS
+2026-11-25 17:09:38 INFO    [Game] Black played B8 C6 -> IN_PROGRESS
+2026-11-25 17:09:42 INFO    [Game] White played C1 F4 -> IN_PROGRESS
+2026-11-25 17:09:45 INFO    [Game] Black played C8 F5 -> IN_PROGRESS
+2026-11-25 17:09:48 INFO    [Game] White played D1 D2 -> IN_PROGRESS
+2026-11-25 17:09:50 INFO    [Game] Black played D8 D7 -> IN_PROGRESS
+2026-11-25 17:09:52 INFO    [Game] White played E1 C1 -> IN_PROGRESS
+2026-11-25 17:10:07 INFO    [Game] New game: White vs Black
+2026-11-25 17:10:07 INFO    [GameController] GUI started a new game: White vs Black
+2026-11-25 17:10:11 INFO    [Game] White played E2 E4 -> IN_PROGRESS
+2026-11-25 17:10:14 INFO    [Game] Black played A7 A6 -> IN_PROGRESS
+2026-11-25 17:10:16 INFO    [Game] White played E4 E5 -> IN_PROGRESS
+2026-11-25 17:10:19 INFO    [Game] Black played D7 D5 -> IN_PROGRESS
+2026-11-25 17:10:22 INFO    [Game] White played E5 D6 -> IN_PROGRESS
+2026-11-25 17:10:31 INFO    [Game] New game: White vs Black
+2026-11-25 17:10:31 INFO    [GameController] GUI started a new game: White vs Black
+2026-11-25 17:10:41 INFO    [Game] White played B2 B4 -> IN_PROGRESS
+2026-11-25 17:10:43 INFO    [Game] Black played A7 A5 -> IN_PROGRESS
+2026-11-25 17:10:48 INFO    [Game] White played B4 A5 -> IN_PROGRESS
+2026-11-25 17:10:49 INFO    [Game] Black played B7 B6 -> IN_PROGRESS
+2026-11-25 17:10:50 INFO    [Game] White played A5 B6 -> IN_PROGRESS
+2026-11-25 17:10:58 INFO    [Game] Black played C7 C6 -> IN_PROGRESS
+2026-11-25 17:10:59 INFO    [Game] White played B6 B7 -> IN_PROGRESS
+2026-11-25 17:11:01 INFO    [Game] Black played D7 D6 -> IN_PROGRESS
+2026-11-25 17:11:09 INFO    [Game] White played B7 A8 Q -> IN_PROGRESS
+2026-11-25 17:11:22 INFO    [Game] New game: White vs Black
+2026-11-25 17:11:22 INFO    [GameController] GUI started a new game: White vs Black
+2026-11-25 17:11:25 INFO    [Game] White played B2 B4 -> IN_PROGRESS
+2026-11-25 17:11:26 INFO    [Game] Black played A7 A5 -> IN_PROGRESS
+2026-11-25 17:11:29 INFO    [Game] White played B4 A5 -> IN_PROGRESS
+2026-11-25 17:11:29 INFO    [Game] Black played B7 B6 -> IN_PROGRESS
+2026-11-25 17:11:30 INFO    [Game] White played A5 B6 -> IN_PROGRESS
+2026-11-25 17:11:31 INFO    [Game] Black played C7 C6 -> IN_PROGRESS
+2026-11-25 17:11:32 INFO    [Game] White played B6 B7 -> IN_PROGRESS
+2026-11-25 17:11:32 INFO    [Game] Black played D7 D6 -> IN_PROGRESS
+2026-11-25 17:12:01 INFO    [Game] New game: White vs Black
+2026-11-25 17:12:01 INFO    [GameController] GUI started a new game: White vs Black
+2026-11-25 17:12:05 INFO    [ChessFrame] Application closed by the user.
+2026-11-25 17:12:33 INFO    [ChessGuiApp] Starting the Swing chess application on Java 26.0.2.1
+2026-11-25 17:12:34 INFO    [Game] New game: White vs Black
+2026-11-25 17:12:34 INFO    [GameController] GUI started a new game: White vs Black
+2026-11-25 17:14:20 INFO    [Game] New game: White vs Computer (Black)
+2026-11-25 17:14:20 INFO    [GameController] GUI started a new game: White vs Computer (Black), computer plays Black using Random
+2026-11-25 17:14:23 INFO    [Game] White played G1 F3 -> IN_PROGRESS
+2026-11-25 17:14:23 INFO    [GameController] Random chose C7 C5 in 0 ms
+2026-11-25 17:14:23 INFO    [Game] Black played C7 C5 -> IN_PROGRESS
+2026-11-25 17:14:54 INFO    [Game] White played D2 D4 -> IN_PROGRESS
+2026-11-25 17:14:54 INFO    [GameController] Random chose D7 D5 in 0 ms
+2026-11-25 17:14:54 INFO    [Game] Black played D7 D5 -> IN_PROGRESS
+2026-11-25 17:14:56 INFO    [Game] White played C2 C4 -> IN_PROGRESS
+2026-11-25 17:14:56 INFO    [GameController] Random chose E7 E6 in 0 ms
+2026-11-25 17:14:56 INFO    [Game] Black played E7 E6 -> IN_PROGRESS
+2026-11-25 17:14:57 INFO    [Game] White played E2 E3 -> IN_PROGRESS
+2026-11-25 17:14:57 INFO    [GameController] Random chose E8 E7 in 0 ms
+2026-11-25 17:14:57 INFO    [Game] Black played E8 E7 -> IN_PROGRESS
+2026-11-25 17:15:00 INFO    [Game] White played D4 C5 -> IN_PROGRESS
+2026-11-25 17:15:00 INFO    [GameController] Random chose H7 H5 in 0 ms
+2026-11-25 17:15:00 INFO    [Game] Black played H7 H5 -> IN_PROGRESS
+2026-11-25 17:15:01 INFO    [Game] White played C4 D5 -> IN_PROGRESS
+2026-11-25 17:15:01 INFO    [GameController] Random chose D8 A5 in 0 ms
+2026-11-25 17:15:01 INFO    [Game] Black played D8 A5 -> CHECK
+2026-11-25 17:15:02 INFO    [Game] White played B1 C3 -> IN_PROGRESS
+2026-11-25 17:15:02 INFO    [GameController] Random chose E7 D7 in 0 ms
+2026-11-25 17:15:02 INFO    [Game] Black played E7 D7 -> IN_PROGRESS
+2026-11-25 17:15:03 INFO    [Game] White played D5 E6 -> CHECK
+2026-11-25 17:15:03 INFO    [GameController] Random chose D7 E6 in 0 ms
+2026-11-25 17:15:03 INFO    [Game] Black played D7 E6 -> IN_PROGRESS
+2026-11-25 17:15:06 INFO    [Game] White played D1 D5 -> CHECK
+2026-11-25 17:15:06 INFO    [GameController] Random chose E6 E7 in 0 ms
+2026-11-25 17:15:06 INFO    [Game] Black played E6 E7 -> IN_PROGRESS
+2026-11-25 17:15:09 INFO    [Game] White played F3 E5 -> IN_PROGRESS
+2026-11-25 17:15:09 INFO    [GameController] Random chose A5 B6 in 0 ms
+2026-11-25 17:15:09 INFO    [Game] Black played A5 B6 -> IN_PROGRESS
+2026-11-25 17:15:10 INFO    [Game] White played C5 B6 -> IN_PROGRESS
+2026-11-25 17:15:10 INFO    [GameController] Random chose G7 G6 in 0 ms
+2026-11-25 17:15:10 INFO    [Game] Black played G7 G6 -> IN_PROGRESS
+2026-11-25 17:15:14 INFO    [Game] White played F1 B5 -> IN_PROGRESS
+2026-11-25 17:15:14 INFO    [GameController] Random chose C8 D7 in 0 ms
+2026-11-25 17:15:14 INFO    [Game] Black played C8 D7 -> IN_PROGRESS
+2026-11-25 17:15:15 INFO    [Game] White played E5 D7 -> IN_PROGRESS
+2026-11-25 17:15:15 INFO    [GameController] Random chose G8 F6 in 0 ms
+2026-11-25 17:15:15 INFO    [Game] Black played G8 F6 -> IN_PROGRESS
+2026-11-25 17:15:16 INFO    [Game] White played D7 F6 -> IN_PROGRESS
+2026-11-25 17:15:16 INFO    [GameController] Random chose H8 H6 in 0 ms
+2026-11-25 17:15:16 INFO    [Game] Black played H8 H6 -> IN_PROGRESS
+2026-11-25 17:15:18 INFO    [Game] White played D5 E5 -> CHECK
+2026-11-25 17:15:18 INFO    [GameController] Random chose E7 D8 in 0 ms
+2026-11-25 17:15:18 INFO    [Game] Black played E7 D8 -> IN_PROGRESS
+2026-11-25 17:15:19 INFO    [Game] White played E5 E8 -> CHECKMATE
+2026-11-25 17:15:19 INFO    [ChessFrame] Game over: Checkmate. White wins
+2026-11-25 17:15:26 INFO    [Game] New game: White vs Computer (Black)
+2026-11-25 17:15:26 INFO    [GameController] GUI started a new game: White vs Computer (Black), computer plays Black using Random
+2026-11-25 17:15:32 INFO    [Game] New game: White vs Computer (Black)
+2026-11-25 17:15:32 INFO    [GameController] GUI started a new game: White vs Computer (Black), computer plays Black using Minimax (depth 2)
+2026-11-25 17:15:33 INFO    [Game] White played D2 D4 -> IN_PROGRESS
+2026-11-25 17:15:33 INFO    [GameController] Minimax (depth 2) chose A7 A5 in 20 ms
+2026-11-25 17:15:33 INFO    [Game] Black played A7 A5 -> IN_PROGRESS
+2026-11-25 17:15:38 INFO    [Game] White played E2 E4 -> IN_PROGRESS
+2026-11-25 17:15:38 INFO    [GameController] Minimax (depth 2) chose B8 C6 in 15 ms
+2026-11-25 17:15:38 INFO    [Game] Black played B8 C6 -> IN_PROGRESS
+2026-11-25 17:15:39 INFO    [Game] White played D4 D5 -> IN_PROGRESS
+2026-11-25 17:15:39 INFO    [GameController] Minimax (depth 2) chose C6 E5 in 8 ms
+2026-11-25 17:15:39 INFO    [Game] Black played C6 E5 -> IN_PROGRESS
+2026-11-25 17:15:41 INFO    [Game] White played C1 F4 -> IN_PROGRESS
+2026-11-25 17:15:41 INFO    [GameController] Minimax (depth 2) chose E5 G6 in 12 ms
+2026-11-25 17:15:41 INFO    [Game] Black played E5 G6 -> IN_PROGRESS
+2026-11-25 17:15:43 INFO    [Game] White played F4 G3 -> IN_PROGRESS
+2026-11-25 17:15:43 INFO    [GameController] Minimax (depth 2) chose G8 F6 in 9 ms
+2026-11-25 17:15:43 INFO    [Game] Black played G8 F6 -> IN_PROGRESS
+2026-11-25 17:15:45 INFO    [Game] White played F2 F3 -> IN_PROGRESS
+2026-11-25 17:15:45 INFO    [GameController] Minimax (depth 2) chose H7 H5 in 5 ms
+2026-11-25 17:15:45 INFO    [Game] Black played H7 H5 -> IN_PROGRESS
+2026-11-25 17:15:47 INFO    [Game] White played B1 C3 -> IN_PROGRESS
+2026-11-25 17:15:47 INFO    [GameController] Minimax (depth 2) chose B7 B6 in 5 ms
+2026-11-25 17:15:47 INFO    [Game] Black played B7 B6 -> IN_PROGRESS
+2026-11-25 17:15:50 INFO    [Game] White played G1 E2 -> IN_PROGRESS
+2026-11-25 17:15:50 INFO    [GameController] Minimax (depth 2) chose C8 B7 in 10 ms
+2026-11-25 17:15:50 INFO    [Game] Black played C8 B7 -> IN_PROGRESS
+2026-11-25 17:15:51 INFO    [Game] White played D1 D4 -> IN_PROGRESS
+2026-11-25 17:15:51 INFO    [GameController] Minimax (depth 2) chose E7 E5 in 18 ms
+2026-11-25 17:15:51 INFO    [Game] Black played E7 E5 -> IN_PROGRESS
+2026-11-25 17:15:53 INFO    [Game] White played G3 E5 -> IN_PROGRESS
+2026-11-25 17:15:53 INFO    [GameController] Minimax (depth 2) chose G6 E5 in 15 ms
+2026-11-25 17:15:53 INFO    [Game] Black played G6 E5 -> IN_PROGRESS
+2026-11-25 17:15:54 INFO    [Game] White played D4 E5 -> CHECK
+2026-11-25 17:15:54 INFO    [GameController] Minimax (depth 2) chose F8 E7 in 4 ms
+2026-11-25 17:15:54 INFO    [Game] Black played F8 E7 -> IN_PROGRESS
+2026-11-25 17:15:57 INFO    [Game] White played E2 D4 -> IN_PROGRESS
+2026-11-25 17:15:57 INFO    [GameController] Minimax (depth 2) chose F6 D5 in 12 ms
+2026-11-25 17:15:57 INFO    [Game] Black played F6 D5 -> IN_PROGRESS
+2026-11-25 17:16:00 INFO    [Game] White played C3 D5 -> IN_PROGRESS
+2026-11-25 17:16:00 INFO    [GameController] Minimax (depth 2) chose B7 D5 in 7 ms
+2026-11-25 17:16:00 INFO    [Game] Black played B7 D5 -> IN_PROGRESS
+2026-11-25 17:16:01 INFO    [Game] White played E4 D5 -> IN_PROGRESS
+2026-11-25 17:16:01 INFO    [GameController] Minimax (depth 2) chose C7 C5 in 12 ms
+2026-11-25 17:16:01 INFO    [Game] Black played C7 C5 -> IN_PROGRESS
+2026-11-25 17:16:03 INFO    [Game] White played D5 C6 -> IN_PROGRESS
+2026-11-25 17:16:03 INFO    [GameController] Minimax (depth 2) chose D7 C6 in 7 ms
+2026-11-25 17:16:03 INFO    [Game] Black played D7 C6 -> IN_PROGRESS
+2026-11-25 17:16:05 INFO    [Game] White played D4 C6 -> IN_PROGRESS
+2026-11-25 17:16:05 INFO    [GameController] Minimax (depth 2) chose D8 D7 in 11 ms
+2026-11-25 17:16:05 INFO    [Game] Black played D8 D7 -> IN_PROGRESS
+2026-11-25 17:16:07 INFO    [Game] White played F1 B5 -> IN_PROGRESS
+2026-11-25 17:16:07 INFO    [GameController] Minimax (depth 2) chose F7 F5 in 20 ms
+2026-11-25 17:16:07 INFO    [Game] Black played F7 F5 -> IN_PROGRESS
+2026-11-25 17:16:08 INFO    [Game] White played C6 E7 -> IN_PROGRESS
+2026-11-25 17:16:08 INFO    [GameController] Minimax (depth 2) chose D7 B5 in 6 ms
+2026-11-25 17:16:08 INFO    [Game] Black played D7 B5 -> IN_PROGRESS
+2026-11-25 17:16:10 INFO    [Game] White played E5 B5 -> CHECK
+2026-11-25 17:16:10 INFO    [GameController] Minimax (depth 2) chose E8 E7 in 1 ms
+2026-11-25 17:16:10 INFO    [Game] Black played E8 E7 -> IN_PROGRESS
+2026-11-25 17:16:11 INFO    [Game] White played B5 F5 -> IN_PROGRESS
+2026-11-25 17:16:11 INFO    [GameController] Minimax (depth 2) chose G7 G5 in 8 ms
+2026-11-25 17:16:11 INFO    [Game] Black played G7 G5 -> IN_PROGRESS
+2026-11-25 17:16:12 INFO    [Game] White played F5 G5 -> CHECK
+2026-11-25 17:16:12 INFO    [GameController] Minimax (depth 2) chose E7 E8 in 1 ms
+2026-11-25 17:16:12 INFO    [Game] Black played E7 E8 -> IN_PROGRESS
+2026-11-25 17:16:13 INFO    [Game] White played E1 F2 -> IN_PROGRESS
+2026-11-25 17:16:13 INFO    [GameController] Minimax (depth 2) chose B6 B5 in 2 ms
+2026-11-25 17:16:13 INFO    [Game] Black played B6 B5 -> IN_PROGRESS
+2026-11-25 17:16:14 INFO    [Game] White played H1 E1 -> CHECK
+2026-11-25 17:16:14 INFO    [GameController] Minimax (depth 2) chose E8 F8 in 1 ms
+2026-11-25 17:16:14 INFO    [Game] Black played E8 F8 -> IN_PROGRESS
+2026-11-25 17:16:16 INFO    [Game] White played G5 E7 -> CHECK
+2026-11-25 17:16:16 INFO    [GameController] Minimax (depth 2) chose F8 G8 in 0 ms
+2026-11-25 17:16:16 INFO    [Game] Black played F8 G8 -> IN_PROGRESS
+2026-11-25 17:16:17 INFO    [Game] White played E1 E6 -> IN_PROGRESS
+2026-11-25 17:16:17 INFO    [GameController] Minimax (depth 2) chose A8 A6 in 7 ms
+2026-11-25 17:16:17 INFO    [Game] Black played A8 A6 -> IN_PROGRESS
+2026-11-25 17:16:19 INFO    [Game] White played E6 A6 -> IN_PROGRESS
+2026-11-25 17:16:19 INFO    [GameController] Minimax (depth 2) chose H8 H7 in 4 ms
+2026-11-25 17:16:19 INFO    [Game] Black played H8 H7 -> IN_PROGRESS
+2026-11-25 17:16:19 INFO    [Game] White played A6 G6 -> CHECK
+2026-11-25 17:16:19 INFO    [GameController] Minimax (depth 2) chose G8 H8 in 1 ms
+2026-11-25 17:16:20 INFO    [Game] Black played G8 H8 -> IN_PROGRESS
+2026-11-25 17:16:21 INFO    [Game] White played E7 F8 -> CHECKMATE
+2026-11-25 17:16:21 INFO    [ChessFrame] Game over: Checkmate. White wins
+2026-11-25 17:16:30 INFO    [Game] New game: White vs Computer (Black)
+2026-11-25 17:16:30 INFO    [GameController] GUI started a new game: White vs Computer (Black), computer plays Black using Minimax (depth 3)
+2026-11-25 17:16:31 INFO    [Game] White played E2 E4 -> IN_PROGRESS
+2026-11-25 17:16:31 INFO    [GameController] Minimax (depth 3) chose G8 F6 in 24 ms
+2026-11-25 17:16:31 INFO    [Game] Black played G8 F6 -> IN_PROGRESS
+2026-11-25 17:16:32 INFO    [Game] White played E4 E5 -> IN_PROGRESS
+2026-11-25 17:16:32 INFO    [GameController] Minimax (depth 3) chose F6 E4 in 24 ms
+2026-11-25 17:16:32 INFO    [Game] Black played F6 E4 -> IN_PROGRESS
+2026-11-25 17:16:35 FINE    [Game] Rejected White move B1 C4: A Knight cannot move from B1 to C4.
+2026-11-25 17:16:35 INFO    [Game] White played B1 C3 -> IN_PROGRESS
+2026-11-25 17:16:35 INFO    [GameController] Minimax (depth 3) chose D7 D5 in 21 ms
+2026-11-25 17:16:36 INFO    [Game] Black played D7 D5 -> IN_PROGRESS
+2026-11-25 17:16:38 FINE    [Game] Rejected White move C3 F4: A Knight cannot move from C3 to F4.
+2026-11-25 17:16:39 INFO    [Game] White played C3 E4 -> IN_PROGRESS
+2026-11-25 17:16:39 INFO    [GameController] Minimax (depth 3) chose D5 E4 in 23 ms
+2026-11-25 17:16:39 INFO    [Game] Black played D5 E4 -> IN_PROGRESS
+2026-11-25 17:16:40 INFO    [Game] White played D1 E2 -> IN_PROGRESS
+2026-11-25 17:16:40 INFO    [GameController] Minimax (depth 3) chose D8 D5 in 37 ms
+2026-11-25 17:16:40 INFO    [Game] Black played D8 D5 -> IN_PROGRESS
+2026-11-25 17:16:44 INFO    [Game] White played E2 B5 -> CHECK
+2026-11-25 17:16:44 INFO    [GameController] Minimax (depth 3) chose C7 C6 in 15 ms
+2026-11-25 17:16:44 INFO    [Game] Black played C7 C6 -> IN_PROGRESS
+2026-11-25 17:16:46 INFO    [Game] White played B5 D5 -> IN_PROGRESS
+2026-11-25 17:16:46 INFO    [GameController] Minimax (depth 3) chose C6 D5 in 14 ms
+2026-11-25 17:16:46 INFO    [Game] Black played C6 D5 -> IN_PROGRESS
+2026-11-25 17:16:49 INFO    [Game] White played F1 B5 -> CHECK
+2026-11-25 17:16:49 INFO    [GameController] Minimax (depth 3) chose B8 C6 in 8 ms
+2026-11-25 17:16:49 INFO    [Game] Black played B8 C6 -> IN_PROGRESS
+2026-11-25 17:16:49 INFO    [Game] White played B5 C6 -> CHECK
+2026-11-25 17:16:50 INFO    [GameController] Minimax (depth 3) chose B7 C6 in 4 ms
+2026-11-25 17:16:50 INFO    [Game] Black played B7 C6 -> IN_PROGRESS
+2026-11-25 17:16:52 INFO    [Game] White played D2 D3 -> IN_PROGRESS
+2026-11-25 17:16:52 INFO    [GameController] Minimax (depth 3) chose A7 A5 in 29 ms
+2026-11-25 17:16:52 INFO    [Game] Black played A7 A5 -> IN_PROGRESS
+2026-11-25 17:16:52 INFO    [Game] White played D3 E4 -> IN_PROGRESS
+2026-11-25 17:16:52 INFO    [GameController] Minimax (depth 3) chose D5 E4 in 16 ms
+2026-11-25 17:16:52 INFO    [Game] Black played D5 E4 -> IN_PROGRESS
+2026-11-25 17:16:54 INFO    [Game] White played C1 F4 -> IN_PROGRESS
+2026-11-25 17:16:54 INFO    [GameController] Minimax (depth 3) chose A8 B8 in 26 ms
+2026-11-25 17:16:54 INFO    [Game] Black played A8 B8 -> IN_PROGRESS
+2026-11-25 17:16:55 INFO    [Game] White played B2 B3 -> IN_PROGRESS
+2026-11-25 17:16:55 INFO    [GameController] Minimax (depth 3) chose B8 B5 in 51 ms
+2026-11-25 17:16:55 INFO    [Game] Black played B8 B5 -> IN_PROGRESS
+2026-11-25 17:16:57 INFO    [Game] White played C2 C4 -> IN_PROGRESS
+2026-11-25 17:16:57 INFO    [GameController] Minimax (depth 3) chose B5 C5 in 27 ms
+2026-11-25 17:16:57 INFO    [Game] Black played B5 C5 -> IN_PROGRESS
+2026-11-25 17:16:59 INFO    [Game] White played G1 E2 -> IN_PROGRESS
+2026-11-25 17:16:59 INFO    [GameController] Minimax (depth 3) chose H7 H5 in 41 ms
+2026-11-25 17:16:59 INFO    [Game] Black played H7 H5 -> IN_PROGRESS
+2026-11-25 17:17:00 INFO    [Game] White played H2 H4 -> IN_PROGRESS
+2026-11-25 17:17:00 INFO    [GameController] Minimax (depth 3) chose C8 E6 in 42 ms
+2026-11-25 17:17:00 INFO    [Game] Black played C8 E6 -> IN_PROGRESS
+2026-11-25 17:17:02 INFO    [Game] White played E2 D4 -> IN_PROGRESS
+2026-11-25 17:17:02 INFO    [GameController] Minimax (depth 3) chose E6 D7 in 27 ms
+2026-11-25 17:17:02 INFO    [Game] Black played E6 D7 -> IN_PROGRESS
+2026-11-25 17:17:05 INFO    [Game] White played A1 D1 -> IN_PROGRESS
+2026-11-25 17:17:06 INFO    [GameController] Minimax (depth 3) chose D7 G4 in 35 ms
+2026-11-25 17:17:06 INFO    [Game] Black played D7 G4 -> IN_PROGRESS
+2026-11-25 17:17:07 INFO    [Game] White played F2 F3 -> IN_PROGRESS
+2026-11-25 17:17:07 INFO    [GameController] Minimax (depth 3) chose E4 F3 in 18 ms
+2026-11-25 17:17:07 INFO    [Game] Black played E4 F3 -> IN_PROGRESS
+2026-11-25 17:17:07 INFO    [Game] White played G2 F3 -> IN_PROGRESS
+2026-11-25 17:17:07 INFO    [GameController] Minimax (depth 3) chose G4 D7 in 17 ms
+2026-11-25 17:17:07 INFO    [Game] Black played G4 D7 -> IN_PROGRESS
+2026-11-25 17:17:10 INFO    [Game] White played E1 F2 -> IN_PROGRESS
+2026-11-25 17:17:10 INFO    [GameController] Minimax (depth 3) chose E7 E6 in 32 ms
+2026-11-25 17:17:10 INFO    [Game] Black played E7 E6 -> IN_PROGRESS
+2026-11-25 17:17:15 INFO    [Game] White played H1 E1 -> IN_PROGRESS
+2026-11-25 17:17:15 INFO    [GameController] Minimax (depth 3) chose G7 G6 in 42 ms
+2026-11-25 17:17:15 INFO    [Game] Black played G7 G6 -> IN_PROGRESS
+2026-11-25 17:17:17 INFO    [Game] White played F4 G5 -> IN_PROGRESS
+2026-11-25 17:17:17 INFO    [GameController] Minimax (depth 3) chose F8 G7 in 30 ms
+2026-11-25 17:17:17 INFO    [Game] Black played F8 G7 -> IN_PROGRESS
+2026-11-25 17:17:18 INFO    [Game] White played G5 F6 -> IN_PROGRESS
+2026-11-25 17:17:18 INFO    [GameController] Minimax (depth 3) chose G7 F6 in 16 ms
+2026-11-25 17:17:18 INFO    [Game] Black played G7 F6 -> IN_PROGRESS
+2026-11-25 17:17:19 INFO    [Game] White played E5 F6 -> IN_PROGRESS
+2026-11-25 17:17:19 INFO    [GameController] Minimax (depth 3) chose E6 E5 in 26 ms
+2026-11-25 17:17:19 INFO    [Game] Black played E6 E5 -> IN_PROGRESS
+2026-11-25 17:17:21 INFO    [Game] White played F3 F4 -> IN_PROGRESS
+2026-11-25 17:17:21 INFO    [GameController] Minimax (depth 3) chose D7 G4 in 20 ms
+2026-11-25 17:17:21 INFO    [Game] Black played D7 G4 -> IN_PROGRESS
+2026-11-25 17:17:23 INFO    [Game] White played D1 D3 -> IN_PROGRESS
+2026-11-25 17:17:23 INFO    [GameController] Minimax (depth 3) chose G4 F5 in 41 ms
+2026-11-25 17:17:23 INFO    [Game] Black played G4 F5 -> IN_PROGRESS
+2026-11-25 17:17:25 INFO    [Game] White played D4 F5 -> IN_PROGRESS
+2026-11-25 17:17:25 INFO    [GameController] Minimax (depth 3) chose G6 F5 in 6 ms
+2026-11-25 17:17:25 INFO    [Game] Black played G6 F5 -> IN_PROGRESS
+2026-11-25 17:17:26 INFO    [Game] White played E1 E5 -> CHECK
+2026-11-25 17:17:26 INFO    [GameController] Minimax (depth 3) chose C5 E5 in 3 ms
+2026-11-25 17:17:26 INFO    [Game] Black played C5 E5 -> IN_PROGRESS
+2026-11-25 17:17:27 INFO    [Game] White played F4 E5 -> IN_PROGRESS
+2026-11-25 17:17:27 INFO    [GameController] Minimax (depth 3) chose H8 H6 in 7 ms
+2026-11-25 17:17:27 INFO    [Game] Black played H8 H6 -> IN_PROGRESS
+2026-11-25 17:17:30 INFO    [Game] White played D3 F3 -> IN_PROGRESS
+2026-11-25 17:17:30 INFO    [GameController] Minimax (depth 3) chose C6 C5 in 8 ms
+2026-11-25 17:17:30 INFO    [Game] Black played C6 C5 -> IN_PROGRESS
+2026-11-25 17:17:31 INFO    [Game] White played F3 F5 -> IN_PROGRESS
+2026-11-25 17:17:31 INFO    [GameController] Minimax (depth 3) chose E8 D8 in 4 ms
+2026-11-25 17:17:31 INFO    [Game] Black played E8 D8 -> IN_PROGRESS
+2026-11-25 17:17:32 INFO    [Game] White played F5 G5 -> IN_PROGRESS
+2026-11-25 17:17:32 INFO    [GameController] Minimax (depth 3) chose D8 C7 in 10 ms
+2026-11-25 17:17:32 INFO    [Game] Black played D8 C7 -> IN_PROGRESS
+2026-11-25 17:17:33 INFO    [Game] White played G5 G7 -> IN_PROGRESS
+2026-11-25 17:17:33 INFO    [GameController] Minimax (depth 3) chose C7 B6 in 6 ms
+2026-11-25 17:17:33 INFO    [Game] Black played C7 B6 -> IN_PROGRESS
+2026-11-25 17:17:34 INFO    [Game] White played G7 F7 -> IN_PROGRESS
+2026-11-25 17:17:34 INFO    [GameController] Minimax (depth 3) chose B6 A6 in 8 ms
+2026-11-25 17:17:34 INFO    [Game] Black played B6 A6 -> IN_PROGRESS
+2026-11-25 17:17:35 INFO    [Game] White played F7 E7 -> IN_PROGRESS
+2026-11-25 17:17:35 INFO    [GameController] Minimax (depth 3) chose A5 A4 in 12 ms
+2026-11-25 17:17:35 INFO    [Game] Black played A5 A4 -> IN_PROGRESS
+2026-11-25 17:17:36 INFO    [Game] White played F6 F7 -> IN_PROGRESS
+2026-11-25 17:17:36 INFO    [GameController] Minimax (depth 3) chose H6 H8 in 5 ms
+2026-11-25 17:17:36 INFO    [Game] Black played H6 H8 -> IN_PROGRESS
+2026-11-25 17:17:37 INFO    [Game] White played E7 E8 -> IN_PROGRESS
+2026-11-25 17:17:37 INFO    [GameController] Minimax (depth 3) chose A4 B3 in 4 ms
+2026-11-25 17:17:37 INFO    [Game] Black played A4 B3 -> IN_PROGRESS
+2026-11-25 17:17:38 INFO    [Game] White played A2 B3 -> IN_PROGRESS
+2026-11-25 17:17:38 INFO    [GameController] Minimax (depth 3) chose H8 F8 in 2 ms
+2026-11-25 17:17:38 INFO    [Game] Black played H8 F8 -> IN_PROGRESS
+2026-11-25 17:17:39 INFO    [Game] White played E8 F8 -> IN_PROGRESS
+2026-11-25 17:17:39 INFO    [GameController] Minimax (depth 3) chose A6 A7 in 1 ms
+2026-11-25 17:17:39 INFO    [Game] Black played A6 A7 -> IN_PROGRESS
+2026-11-25 17:17:41 INFO    [Game] White played F8 E8 -> IN_PROGRESS
+2026-11-25 17:17:41 INFO    [GameController] Minimax (depth 3) chose A7 B7 in 2 ms
+2026-11-25 17:17:41 INFO    [Game] Black played A7 B7 -> IN_PROGRESS
+2026-11-25 17:17:43 INFO    [Game] White played F7 F8 Q -> IN_PROGRESS
+2026-11-25 17:17:43 INFO    [GameController] Minimax (depth 3) chose B7 B6 in 5 ms
+2026-11-25 17:17:43 INFO    [Game] Black played B7 B6 -> IN_PROGRESS
+2026-11-25 17:17:44 INFO    [Game] White played F8 D6 -> CHECK
+2026-11-25 17:17:44 INFO    [GameController] Minimax (depth 3) chose B6 A7 in 2 ms
+2026-11-25 17:17:44 INFO    [Game] Black played B6 A7 -> IN_PROGRESS
+2026-11-25 17:17:46 INFO    [Game] White played E8 E7 -> CHECK
+2026-11-25 17:17:46 INFO    [GameController] Minimax (depth 3) chose A7 A8 in 3 ms
+2026-11-25 17:17:46 INFO    [Game] Black played A7 A8 -> IN_PROGRESS
+2026-11-25 17:17:47 INFO    [Game] White played D6 D8 -> CHECKMATE
+2026-11-25 17:17:47 INFO    [ChessFrame] Game over: Checkmate. White wins
+2026-11-25 17:18:03 INFO    [Game] New game: Computer (White) vs Black
+2026-11-25 17:18:03 INFO    [GameController] GUI started a new game: Computer (White) vs Black, computer plays White using Minimax (depth 3)
+2026-11-25 17:18:03 INFO    [GameController] Minimax (depth 3) chose A2 A4 in 33 ms
+2026-11-25 17:18:03 INFO    [Game] White played A2 A4 -> IN_PROGRESS
+2026-11-25 17:18:07 INFO    [Game] Black played D7 D5 -> IN_PROGRESS
+2026-11-25 17:18:07 INFO    [GameController] Minimax (depth 3) chose B1 C3 in 41 ms
+2026-11-25 17:18:07 INFO    [Game] White played B1 C3 -> IN_PROGRESS
+2026-11-25 17:18:08 INFO    [Game] Black played E7 E6 -> IN_PROGRESS
+2026-11-25 17:18:08 INFO    [GameController] Minimax (depth 3) chose G1 F3 in 69 ms
+2026-11-25 17:18:08 INFO    [Game] White played G1 F3 -> IN_PROGRESS
+2026-11-25 17:18:09 INFO    [Game] Black played G8 F6 -> IN_PROGRESS
+2026-11-25 17:18:09 INFO    [GameController] Minimax (depth 3) chose H2 H4 in 41 ms
+2026-11-25 17:18:09 INFO    [Game] White played H2 H4 -> IN_PROGRESS
+2026-11-25 17:18:17 INFO    [Game] New game: Computer (White) vs Black
+2026-11-25 17:18:17 INFO    [GameController] GUI started a new game: Computer (White) vs Black, computer plays White using Minimax (depth 3)
+2026-11-25 17:18:17 INFO    [GameController] Minimax (depth 3) chose A2 A4 in 34 ms
+2026-11-25 17:18:17 INFO    [Game] White played A2 A4 -> IN_PROGRESS
+2026-11-25 17:19:15 INFO    [Game] Black played D7 D5 -> IN_PROGRESS
+2026-11-25 17:19:15 INFO    [GameController] Minimax (depth 3) chose B1 C3 in 49 ms
+2026-11-25 17:19:15 INFO    [Game] White played B1 C3 -> IN_PROGRESS
+2026-11-25 17:19:16 INFO    [Game] Black played C7 C6 -> IN_PROGRESS
+2026-11-25 17:19:16 INFO    [GameController] Minimax (depth 3) chose G1 F3 in 46 ms
+2026-11-25 17:19:16 INFO    [Game] White played G1 F3 -> IN_PROGRESS
+2026-11-25 17:19:19 INFO    [Game] Black played E7 E6 -> IN_PROGRESS
+2026-11-25 17:19:19 INFO    [GameController] Minimax (depth 3) chose G2 G4 in 46 ms
+2026-11-25 17:19:19 INFO    [Game] White played G2 G4 -> IN_PROGRESS
+2026-11-25 17:19:20 INFO    [Game] Black played F8 E7 -> IN_PROGRESS
+2026-11-25 17:19:20 INFO    [GameController] Minimax (depth 3) chose H2 H4 in 41 ms
+2026-11-25 17:19:20 INFO    [Game] White played H2 H4 -> IN_PROGRESS
+2026-11-25 17:19:21 INFO    [Game] Black played C8 D7 -> IN_PROGRESS
+2026-11-25 17:19:21 INFO    [GameController] Minimax (depth 3) chose F3 E5 in 38 ms
+2026-11-25 17:19:21 INFO    [Game] White played F3 E5 -> IN_PROGRESS
+2026-11-25 17:19:24 INFO    [Game] New game: Computer (White) vs Black
+2026-11-25 17:19:24 INFO    [GameController] GUI started a new game: Computer (White) vs Black, computer plays White using Minimax (depth 3)
+2026-11-25 17:19:24 INFO    [GameController] Minimax (depth 3) chose A2 A4 in 35 ms
+2026-11-25 17:19:24 INFO    [Game] White played A2 A4 -> IN_PROGRESS
+2026-11-25 17:19:29 INFO    [Game] New game: Computer (White) vs Black
+2026-11-25 17:19:29 INFO    [GameController] GUI started a new game: Computer (White) vs Black, computer plays White using Minimax (depth 3)
+2026-11-25 17:19:29 INFO    [GameController] Minimax (depth 3) chose A2 A4 in 36 ms
+2026-11-25 17:19:29 INFO    [Game] White played A2 A4 -> IN_PROGRESS
+2026-11-25 17:19:37 INFO    [ChessFrame] Application closed by the user.
+2026-11-25 17:20:37 INFO    [Game] New game: White vs Black
+2026-11-25 17:20:45 INFO    [Game] White played E2 E4 -> IN_PROGRESS
+2026-11-25 17:20:57 INFO    [Game] Black played D7 D5 -> IN_PROGRESS
+2026-11-25 17:23:55 INFO    [ChessGuiApp] Starting the Swing chess application on Java 26.0.2.1
+2026-11-25 17:23:55 INFO    [Game] New game: White vs Black
+2026-11-25 17:23:55 INFO    [GameController] GUI started a new game: White vs Black
+2026-11-25 17:23:58 INFO    [Game] White played E2 E4 -> IN_PROGRESS
+2026-11-25 17:24:03 INFO    [Game] New game: White vs Black
+2026-11-25 17:24:03 INFO    [GameController] GUI started a new game: White vs Black
+2026-11-25 17:24:10 INFO    [Game] White played E2 E4 -> IN_PROGRESS
+2026-11-25 17:24:11 INFO    [Game] Black played F7 F6 -> IN_PROGRESS
+2026-11-25 17:24:13 INFO    [Game] White played D1 H5 -> CHECK
+2026-11-25 17:24:22 INFO    [Game] New game: White vs Black
+2026-11-25 17:24:22 INFO    [GameController] GUI started a new game: White vs Black
+2026-11-25 17:24:31 INFO    [Game] White played E2 E3 -> IN_PROGRESS
+2026-11-25 17:24:34 INFO    [Game] Black played A7 A5 -> IN_PROGRESS
+2026-11-25 17:24:36 INFO    [Game] White played D2 D4 -> IN_PROGRESS
+2026-11-25 17:24:41 INFO    [Game] Black played B7 B6 -> IN_PROGRESS
+2026-11-25 17:24:49 INFO    [Game] New game: White vs Black
+2026-11-25 17:24:49 INFO    [GameController] GUI started a new game: White vs Black
+2026-11-25 17:24:52 INFO    [Game] White played E2 E3 -> IN_PROGRESS
+2026-11-25 17:24:55 INFO    [Game] Black played A7 A5 -> IN_PROGRESS
+2026-11-25 17:24:57 INFO    [Game] White played D2 D4 -> IN_PROGRESS
+2026-11-25 17:25:01 INFO    [Game] New game: White vs Black
+2026-11-25 17:25:01 INFO    [GameController] GUI started a new game: White vs Black
+2026-11-25 17:25:01 INFO    [Game] White played E2 E3 -> IN_PROGRESS
+2026-11-25 17:25:03 INFO    [Game] Black played A7 A5 -> IN_PROGRESS
+2026-11-25 17:25:05 INFO    [Game] White played D1 H5 -> IN_PROGRESS
+2026-11-25 17:25:07 INFO    [Game] Black played A8 A6 -> IN_PROGRESS
+2026-11-25 17:25:09 INFO    [Game] White played H5 A5 -> IN_PROGRESS
+2026-11-25 17:25:20 INFO    [Game] Black played H7 H5 -> IN_PROGRESS
+2026-11-25 17:25:23 INFO    [Game] White played H2 H4 -> IN_PROGRESS
+2026-11-25 17:25:27 INFO    [Game] Black played A6 H6 -> IN_PROGRESS
+2026-11-25 17:25:33 INFO    [Game] White played A5 C7 -> IN_PROGRESS
+2026-11-25 17:25:36 INFO    [Game] Black played F7 F6 -> IN_PROGRESS
+2026-11-25 17:25:42 INFO    [Game] White played C7 D7 -> CHECK
+2026-11-25 17:25:46 INFO    [Game] Black played E8 F7 -> IN_PROGRESS
+2026-11-25 17:25:48 INFO    [Game] White played D7 B7 -> IN_PROGRESS
+2026-11-25 17:25:57 INFO    [Game] Black played D8 D3 -> IN_PROGRESS
+2026-11-25 17:26:03 INFO    [Game] White played B7 B8 -> IN_PROGRESS
+2026-11-25 17:26:09 INFO    [Game] Black played D3 H7 -> IN_PROGRESS
+2026-11-25 17:26:11 INFO    [Game] White played B8 C8 -> IN_PROGRESS
+2026-11-25 17:26:19 INFO    [Game] Black played F7 G6 -> IN_PROGRESS
+2026-11-25 17:26:23 INFO    [Game] White played C8 E6 -> STALEMATE
+2026-11-25 17:26:23 INFO    [ChessFrame] Game over: Stalemate. The game is a draw
+2026-11-25 17:26:38 INFO    [Game] New game: White vs Black
+2026-11-25 17:26:38 INFO    [GameController] GUI started a new game: White vs Black
